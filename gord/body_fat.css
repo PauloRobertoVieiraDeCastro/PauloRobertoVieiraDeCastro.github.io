@@ -1,0 +1,34 @@
+body{
+	background-color: #F8F8F8;
+	margin: 0px;
+}
+
+nav{
+	background-color: #3366ff;
+	color: white;
+	min-height: 50px;
+	z-index: 100;
+}
+
+.navegada{
+	color: white;
+}
+
+.fgo{
+	padding-right: 20px;
+}
+
+.estilo{
+	color: white;
+	font-size: 18px;
+	text-align: center;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+  border-style: solid 2px;
+} 
+
+.mt-n1 {
+  margin-top: -5%;
+}
