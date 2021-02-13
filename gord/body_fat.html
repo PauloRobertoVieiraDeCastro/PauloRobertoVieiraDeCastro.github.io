@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Gordura Corporal</title>
+        <meta charset="utf-8">
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fontenele/bootstrap-navbar-dropdowns@5.0.2/dist/css/bootstrap-navbar-dropdowns.min.css">
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       
+        <meta name="viewport" content="width=device-width;initial-scale=1;shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="body_fat.css">
+        <link rel="shortcut icon" href="favicona.ico"/>
+        <script type="text/javascript" src="body_fat.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top get" style="background-color: blue">
+            <div class="container col-md-4">
+                <div class="col-md-12">
+                    <a class="nav-link estilo" href="#quemsoueu">Calculadora de gordura corporal</a>
+                </div>
+            </div>
+        </nav>
+
+
+
+            <div class="container">
+                <div class="jumbotron" style="margin-top: 8%;padding-top: 20px;margin-left: 20px; margin-right: 20px">
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6 col-sm-12">
+                            <label class="col-form-label col-form-label-lg">Insira a altura</label>
+                            <input type="text" placeholder="cm" class="form-control form-control-lg altura" name="altura">
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-12">
+                            <label class="col-form-label col-form-label-lg">Insira a massa</label>
+                            <input type="text" placeholder="Kgs" class="form-control form-control-lg peso" name="peso">
+                        </div>
+                    </div>
+                
+
+                <div class="form-row" style="margin-top: 20px">
+                    <div class="form-group col-md-6 col-sm-12">
+                        <label class="col-form-label col-form-label-lg">Insira a circunferência do pescoço</label>
+                        <input type="text" name="pesoco" placeholder="cm" class="form-control form-control-lg pescoco">
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-12">
+                        <label class="col-form-label col-form-label-lg">Insira a circunferência da cintura</label>
+                        <input type="text" name="abdome" placeholder="cm" class="form-control form-control-lg abdome">
+                    </div>
+                </div>
+
+
+                <div class="form-row" style="margin-top: 20px">
+                    <div class="form-group col-md-6 col-sm-12">
+                            <label class="col-form-label col-form-label-lg">Selecione o sexo do indivíduo</label>
+                            <div class="form-check">
+                                <input type="radio" id="real" name="gender" value="0" checked class="form-check-input" onclick="show_input(0)">
+                                <label class="form-check-label" style="font-size: 20px">Masculino</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="radio" id="real" name="gender" value="1" checked class="form-check-input" onclick="show_input(1)">
+                                <label class="form-check-label" style="font-size: 20px">Feminino</label>
+                            </div>
+                            
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12" id="mulher">
+                        <label class="col-form-label col-form-label-lg">Insira a circunferência do quadril</label>
+                        <input type="text" name="gluteo" placeholder="cm" class="form-control form-control-lg gluteo">
+                    </div>
+                </div>
+
+                <div class="form-row justify-content-center" style="margin-top: 2%">
+                    <div class="justify-content-center">
+                        <button style="font-size: 25px; width: 250px" type="button" class="btn btn-primary btn-lg" onclick="calculo()" >Calcular</button>
+                    </div>
+                </div>
+
+                <div class="form-row justify-content-center" style="margin-top: 2%">
+                    <div class="justify-content-center" style="font-size: 20px">
+                            <h4 class="gord"></h4>
+                    </div>
+                </div>
+                 
+                </div>
+            </div>
+     
+                    
+    </body>
+</html>
