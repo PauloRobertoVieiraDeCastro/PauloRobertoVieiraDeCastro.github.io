@@ -1,0 +1,66 @@
+body{
+	background-color: #F8F8F8;
+	margin: 0px;
+}
+
+nav{
+	background-color: #3366ff;
+	color: white;
+	min-height: 50px;
+	z-index: 100;
+}
+
+@media (max-width: 860px){
+	#imagem{display: none}
+}
+
+input[type=radio] {
+    border-radius: : 25px;
+    border-color: black;
+    border-style: ridge;
+}
+
+input[type=radio]:checked{
+    background-color: red;
+ }
+
+.borda{
+	background-color: white; 
+	border-radius: 15px; 
+	border: groove 0.1em;
+	margin-top: 10px;
+	color: rgb(0,0,102);
+}
+
+.borda:hover {
+  color: black;
+}
+
+.classe_a{
+	margin-left: 0%;
+	margin-right: 0%;
+}
+
+.navegada{
+	color: white;
+}
+
+.fgo{
+	padding-right: 20px;
+}
+
+.estilo{
+	color: white;
+	font-size: 25px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+  border-style: solid 2px;
+} 
+
+.mt-n1 {
+  margin-top: -5%;
+}
