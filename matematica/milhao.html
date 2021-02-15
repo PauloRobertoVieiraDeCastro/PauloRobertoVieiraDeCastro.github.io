@@ -36,7 +36,9 @@
             <source src="psico.mp3" type="audio/mp3">
         </audio>
 
-        
+        <audio id="audio_s4" autoplay>
+            <source src="jaws.mp3" type="audio/mp3">
+        </audio>
 
         <div class="container">
             <div class="jumbotron" style="margin-top: 1%; background-color: rgb(0, 0, 102)">
@@ -51,7 +53,7 @@
 
                 <div class="form-row" style="margin-top: 20px">
                     
-                    <div class="form-group col-md-6 col-sm-12" id="form">
+                    <div class="form-group col-lg-6 col-md-12" id="form">
                         <div class="form-check borda">
                             <input type="radio" name="gender" value="0" class="form-check-input" onclick="show_input(0)" src="1.png">
                             <label class="form-check-label a" style="font-size: 22px; color: rgb(0,0,102); font-weight: bold"></label>
@@ -67,29 +69,33 @@
                             <label class="form-check-label c" style="font-size: 22px; color: rgb(0,0,102); font-weight: bold"></label>
                         </div>
 
-                        <div class="form-check borda radio icheck-primary">
-                            <input type="radio" id="real" name="gender" value="3" class="form-check-input" onclick="show_input(3)" style="font-weight: bold">
+                        <div class="form-check borda">
+                            <input type="radio" id="real" name="gender" value="3" class="form-check-input" onclick="show_input(3)">
                             <label class="form-check-label d" style="font-size: 22px; color: rgb(0,0,102); font-weight: bold"></label>
                         </div>
+
+                        <div class="form-row">
+                            <div class="col-lg-6" style="margin-top: 5%;">
+                                <button style="font-size: 20px; width: 200px; background-color: yellow; color: black" type="button" class="btn btn-primary btn-lg" onclick="calculo()" >Confirmar</button>
+                            </div>
+
+                            <div class="col-lg-6"style="margin-top: 5%;">
+                                <button style="font-size: 20px; width: 200px; background-color: yellow; color: black" type="button" class="btn btn-primary btn-lg" onclick="parar()" >Parar</button>
+                            </div>
+                        </div> 
     
                     </div>
 
-                     <div class="form-group col-md-6"  style="margin-top: -70px; padding-left: 40px"> 
+                    
+                        
+                    <div class="form-group col-md-6"  style="margin-top: 0px; padding-left: 40px"> 
                         <img src="sswi.jpg" id="imagem" class="img-fluid">
                     </div>
 
-
+                    
                 </div>
 
-                <div class="form-row justify-content-start">
-                    <div class="col-lg-3 col-md-12" style="margin-top: 2%;">
-                        <button style="font-size: 25px; width: 250px; background-color: yellow; color: black" type="button" class="btn btn-primary btn-lg" onclick="calculo()" >Confirmar</button>
-                    </div>
-
-                    <div class="col-lg-3 col-md-12"style="margin-top: 2%;">
-                        <button style="font-size: 25px; width: 250px; background-color: yellow; color: black" type="button" class="btn btn-primary btn-lg" onclick="parar()" >Parar</button>
-                    </div>
-                </div>
+                
 
 
 
