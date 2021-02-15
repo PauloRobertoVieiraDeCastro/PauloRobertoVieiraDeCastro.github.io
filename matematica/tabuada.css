@@ -14,6 +14,17 @@ nav{
 	#imagem{display: none}
 }
 
+@media(max-width: 860px){
+	#bot1{
+		text-align: center;
+	}
+
+	#bot2{
+		text-align: center;
+		
+	}
+}
+
 input[type=radio] {
     border-radius: : 25px;
     border-color: black;
