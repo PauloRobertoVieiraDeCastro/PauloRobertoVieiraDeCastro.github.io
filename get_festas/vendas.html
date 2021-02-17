@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Venda GET Festas</title>
+        <title>Gordura Corporal</title>
         <meta charset="utf-8">
         <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fontenele/bootstrap-navbar-dropdowns@5.0.2/dist/css/bootstrap-navbar-dropdowns.min.css">
@@ -35,17 +35,17 @@
                 <div class="jumbotron jumbo">
 
                     <div class="form-row">
-                        <div class="form-group col-md-4 col-sm-12">
+                        <div class="form-group col-lg-4 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a venda</label>
                             <input type="number" placeholder="Giselle (em R$)" class="form-control form-control-lg gi" name="gi">
                         </div>
 
-                        <div class="form-group col-md-4 col-sm-12">
+                        <div class="form-group col-lg-4 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a venda</label>
                             <input type="number" placeholder="Thais (em R$)" class="form-control form-control-lg thata" name="thata">
                         </div>
 
-                        <div class="form-group col-md-4 col-sm-12">
+                        <div class="form-group col-lg-4 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a venda</label>
                             <input type="number" placeholder="Neusa (em R$)" class="form-control form-control-lg neusa" name="neusa">
                         </div>
@@ -54,13 +54,26 @@
 
                 <div class="form-row justify-content-center" style="margin-top: 2%">
                     <div class="justify-content-center">
-                        <button style="font-size: 25px; width: 250px; background-color: rgb(102, 0, 102); border-color: black" type="button" class="btn btn-primary btn-lg" onclick="calcular()" >Calcular</button>
+                        <button style="font-size: 25px; width: 250px; background-color: rgb(102, 0, 102); border-color: black" type="button" class="btn btn-primary btn-lg" onclick="calcular()">Calcular</button>
                     </div>
+
+                    <!--<div class="col-lg-6 col-md-12 justify-content-center">
+                        <button style="font-size: 25px; width: 250px; background-color: rgb(102, 0, 102); border-color: black" type="button" class="btn btn-primary btn-lg" onclick="enviar()">Enviar</button>
+                    </div>-->
+                </div>
+
+                <div class="form-row justify-content-center" style="margin-top: 2%" id="botao2">
+                    <div class="justify-content-center" id="botao">
+                    </div>
+
+                    <!--<div class="col-lg-6 col-md-12 justify-content-center">
+                        <button style="font-size: 25px; width: 250px; background-color: rgb(102, 0, 102); border-color: black" type="button" class="btn btn-primary btn-lg" onclick="enviar()">Enviar</button>
+                    </div>-->
                 </div>
 
                 <div class="form-row justify-content-center" style="margin-top: 5%">
                     <div class="justify-content-center" style="font-size: 20px">
-                            <h4 class="venda_get"></h4>
+                        <h4 class="venda_get"></h4>
                     </div>
                 </div>
                  
