@@ -2,6 +2,19 @@ function calcular(){
 	var gi = parseFloat(document.querySelector(".gi").value);
 	var thata = parseFloat(document.querySelector(".thata").value);
 	var neusa = parseFloat(document.querySelector(".neusa").value);
+	
+	if (isNaN(gi)){
+		gi = 0;
+	}
+
+	if (isNaN(thata)){
+		thata = 0;
+	}
+
+	if (isNaN(neusa)){
+		neusa = 0;
+	}
+	
 	var get_festas = (gi + thata + neusa)/2;
 	var v_gi = gi/3 + thata/12 + neusa/12;
 	var v_tha = thata/3 + gi/12 + neusa/12;
