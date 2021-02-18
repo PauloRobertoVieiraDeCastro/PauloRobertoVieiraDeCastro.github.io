@@ -15,10 +15,11 @@ function calcular(){
 		neusa = 0;
 	}
 	
-	var get_festas = (gi + thata + neusa)/2;
-	var v_gi = gi/3 + thata/12 + neusa/12;
-	var v_tha = thata/3 + gi/12 + neusa/12;
-	var v_neusa = neusa/3 + gi/12 + thata/12;
+	var get_festas = 0.6*(gi + thata + neusa);
+	var v_gi = 0.3*gi + 0.05*thata + 0.05*neusa;
+	var v_tha = 0.3*thata + 0.05*gi + 0.05*neusa;
+	var v_neusa = 0.3*neusa + 0.05*gi + 0.05*thata;
+	
 	document.querySelector(".venda_get").innerHTML = 'Valor para a GET Festas: R$ ' + parseFloat(get_festas.toFixed(2));
 	document.querySelector(".giselle").innerHTML = 'Valor para Giselle: R$ ' + parseFloat(v_gi.toFixed(2));
 	document.querySelector(".thais").innerHTML = 'Valor para Thais: R$ ' + parseFloat(v_tha.toFixed(2));
