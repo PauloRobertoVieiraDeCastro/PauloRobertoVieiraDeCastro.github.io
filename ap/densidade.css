@@ -10,14 +10,14 @@ nav{
 	z-index: 100;
 }
 
-@media(min-width: 860px){
+@media(min-width: 1020px){
 	.navegada{
 		color: white;
 		margin-left: 40px;
 	}
 }
 
-@media(max-width: 860px){
+@media(max-width: 1020px){
 	.navegada{
 		color: white;
 		margin-left: -40px;
