@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="densidade.css">
         <link rel="shortcut icon" href="oil.ico" />
         <script type="text/javascript" src="densidade.js"></script>
+        <script type="text/javascript" src="balanco_1.js"></script>
     </head>
 
     <body>
@@ -31,14 +32,9 @@
 
                 <div class="container nav-item dropdown navegada col-lg-4">
                     <div class="col-lg-12">
-                        <a class="nav-link dropdown-toggle estilo" id="navbar-dropdown" role="button" data-toggle="dropdown">
+                        <a class="nav-link estilo" href="#bal1">
                             Balanço com dados finais
                         </a>
-
-                        <div class="dropdown-menu col-md-12" style="background-color: white; color: black; margin-left: 20px">
-                            <a class="dropdown-item" href="#">MVD</a>
-                            <a class="dropdown-item" href="#">Potstill</a>
-                        </div>
                     </div>
                 </div>
 
@@ -63,11 +59,11 @@
 
 
             <div class="container">
-                <div class="jumbotron" style="margin-top: 120px;padding-top: 20px;margin-left: 20px; margin-right: 20px">
+                <div class="jumbotron" style="margin-top: 120px;padding-top: 30px;margin-left: 20px; margin-right: 20px">
                     <div id="density">
                         <h3>Conversão de densidades</h3>
                     </div>
-                    <div class="form-row" style="margin-top: 20px">
+                    <div class="form-row" style="margin-top: 10px">
 
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a densidade medida</label>
@@ -106,60 +102,140 @@
             <div class="container">
                 <div class="jumbotron" style="margin-top: 8%;padding-top: 20px;margin-left: 20px; margin-right: 20px">
                     <div id="bal1">
-                        <h3>Balanço com dados finais - MVD</h3>
+                        <h3>Balanço com dados finais - MVD e Potstill</h3>
                     </div>
+
+                    <div>
+                        <p>Se Potstill, não preencher o campo dos leves.</p>
+                    </div>
+
                     <div class="form-row" style="margin-top: 20px">
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a densidade do óleo a 20°C</label>
-                            <input type="number" placeholder="g/cm³" class="form-control form-control-lg rho" name="rho">
+                            <input type="number" placeholder="em g/cm³" class="form-control form-control-lg rho_oleo" name="rho_oleo">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a massa de óleo</label>
-                            <input type="number" placeholder="em gramas" class="form-control form-control-lg temp" name="temp">
+                            <input type="number" placeholder="em gramas" class="form-control form-control-lg m_oleo" name="m_oleo">
                         </div>
                     </div>
 
                     <div class="form-row" style="margin-top: 20px">
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira o percentual mássico de leves</label>
-                            <input type="number" placeholder="% de 0 até 100" class="form-control form-control-lg rho" name="rho">
+                            <input type="number" placeholder="% de 0 até 100" class="form-control form-control-lg mas_lev" name="mas_lev">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira o percentual volumétrico de leves</label>
-                            <input type="number" placeholder="% de 0 até 100" class="form-control form-control-lg temp" name="temp">
+                            <input type="number" placeholder="% de 0 até 100" class="form-control form-control-lg vol_lev" name="vol_lev">
                         </div>
                     </div>
 
                     <div class="form-row" style="margin-top: 20px">
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a massa de destilado</label>
-                            <input type="number" placeholder="em gramas" class="form-control form-control-lg rho" name="rho">
+                            <input type="number" placeholder="em gramas" class="form-control form-control-lg mas_dest" name="mas_dest">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira o volume de destilado</label>
-                            <input type="number" placeholder="em gramas" class="form-control form-control-lg temp" name="temp">
+                            <input type="number" placeholder="em mililitros" class="form-control form-control-lg vol_dest" name="vol_dest">
                         </div>
                     </div>
 
                      <div class="form-row" style="margin-top: 20px">
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a massa de resíduo</label>
-                            <input type="number" placeholder="em gramas" class="form-control form-control-lg rho" name="rho">
+                            <input type="number" placeholder="em gramas" class="form-control form-control-lg mas_res" name="mas_res">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-12">
                             <label class="col-form-label col-form-label-lg">Insira a densidade do resíduo a 20°C</label>
-                            <input type="number" placeholder="g/cm³" class="form-control form-control-lg temp" name="temp">
+                            <input type="number" placeholder="g/cm³" class="form-control form-control-lg rho_res" name="rho_res">
                         </div>
                     </div>
 
                      <div class="form-row justify-content-center" style="margin-top: 2%">
                         <div class="justify-content-center">
-                            <button style="font-size: 25px; width: 250px" type="button" class="btn btn-primary btn-lg" onclick="calcular()">Calcular</button>
+                            <button style="font-size: 25px; width: 250px" type="button" class="btn btn-primary btn-lg" onclick="balanco_mvd_simples()">Calcular</button>
                         </div>
+                    </div>
+
+                    <div class="form-row justify-content-center" style="margin-top: 5%">
+                        <div class="justify-content-center" style="font-size: 20px">
+                            <h4 class="onde_perda"></h4>
+                        </div>
+                    </div>
+
+
+                    <div class="table-responsive" style="margin-top: 20px">          
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Massa</th>
+                            <th>Volume</th>
+                            <th>Densidade</th>
+                            <th>API</th>
+                            <th>% Mássico</th>
+                            <th>% Vol</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Petróleo</td>
+                            <td class="m_o"></td>
+                            <td class="v_o"></td>
+                            <td class="rho_o"></td>
+                            <td class="api_o"></td>
+                            <td class="pm_o"></td>
+                            <td class="pv_o"></td>
+                          </tr>
+
+                          <tr>
+                                <td>Leves</td>
+                                <td class="m_l"></td>
+                                <td class="v_l"></td>
+                                <td class="rho_l"></td>
+                                <td class="api_l"></td>
+                                <td class="pm_l"></td>
+                                <td class="pv_l"></td>
+                          </tr>
+
+                          <tr>
+                                <td>Destilado</td>
+                                <td class="m_d"></td>
+                                <td class="v_d"></td>
+                                <td class="rho_d"></td>
+                                <td class="api_d"></td>
+                                <td class="pm_d"></td>
+                                <td class="pv_d"></td>
+                          </tr>
+
+                          <tr>
+                                <td>Resíduo</td>
+                                <td class="m_r"></td>
+                                <td class="v_r"></td>
+                                <td class="rho_r"></td>
+                                <td class="api_r"></td>
+                                <td class="pm_r"></td>
+                                <td class="pv_r"></td>
+                          </tr>
+
+                          <tr>
+                                <td>Perdas</td>
+                                <td class="m_p"></td>
+                                <td class="v_p"></td>
+                                <td class="rho_p"></td>
+                                <td class="api_p"></td>
+                                <td class="pm_p"></td>
+                                <td class="pv_p"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </div>
                     </div>
 
                 </div>
