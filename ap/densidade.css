@@ -24,6 +24,9 @@ nav{
 	}
 }
 
+tr, thead{
+	text-align: center;
+}
 
 .fgo{
 	padding-right: 20px;
