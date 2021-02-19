@@ -49,4 +49,5 @@ tr, thead{
 a:hover {
   font-weight: bolder;
   color: white;
+  font-size: 22px;	
 }
