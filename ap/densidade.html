@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Conversão de densidades</title>
+        <meta charset="utf-8">
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fontenele/bootstrap-navbar-dropdowns@5.0.2/dist/css/bootstrap-navbar-dropdowns.min.css">
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       
+        <meta name="viewport" content="width=device-width;initial-scale=1;shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="densidade.css">
+
+        <script type="text/javascript" src="densidade.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top get">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudo-navbar">
+                <span class="navbar-toggler-icon" style="border-style: solid 4px; color: black"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="conteudo-navbar">
+                <div class="container navegada col-lg-4">
+                    <div class="col-lg-12">
+                        <a class="nav-link estilo" href="#density">Conversão de densidades</a>
+                    </div>
+                </div>
+
+                <div class="container nav-item dropdown navegada col-lg-4">
+                    <div class="col-lg-12">
+                        <a class="nav-link dropdown-toggle estilo" id="navbar-dropdown" role="button" data-toggle="dropdown">
+                            Balanço com dados finais
+                        </a>
+
+                        <div class="dropdown-menu col-md-12" style="background-color: white; color: black; margin-left: 20px">
+                            <a class="dropdown-item" href="#">MVD</a>
+                            <a class="dropdown-item" href="#">Potstill</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container nav-item dropdown navegada col-lg-4">
+                    <div class="col-lg-12">
+                        <a class="nav-link dropdown-toggle estilo" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown">
+                            Balanço com dados crus
+                        </a>
+
+                        <div class="dropdown-menu col-md-12" style="margin-left: 20px">
+                            <a class="dropdown-item" href="#">Destilados</a>
+                            <a class="dropdown-item" href="#">MVD</a>
+                            <a class="dropdown-item" href="#">Potstill</a>
+                        </div>
+                    </div>   
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+            <div class="container">
+                <div class="jumbotron" style="margin-top: 8%;padding-top: 20px;margin-left: 20px; margin-right: 20px">
+                    <div id="density">
+                        <h3>Conversão de densidades</h3>
+                    </div>
+                    <div class="form-row" style="margin-top: 20px">
+
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira a densidade medida</label>
+                            <input type="number" placeholder="em g/cm³" class="form-control form-control-lg rho" name="rho">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira a temperatura de medição</label>
+                            <input type="number" placeholder="em °C" class="form-control form-control-lg temp" name="temp">
+                        </div>
+                    </div>
+       
+
+                <div class="form-row justify-content-center" style="margin-top: 2%">
+                    <div class="justify-content-center">
+                        <button style="font-size: 25px; width: 250px" type="button" class="btn btn-primary btn-lg" onclick="calcular()">Calcular</button>
+                    </div>
+                </div>
+
+
+                <div class="form-row justify-content-center" style="margin-top: 5%">
+                    <div class="justify-content-center" style="font-size: 20px">
+                        <h4 class="densidade_final"></h4>
+                    </div>
+                </div>
+
+                <div class="form-row justify-content-center" style="margin-top: 2%">
+                    <div class="justify-content-center" style="font-size: 20px">
+                        <h4 class="API_final"></h4>
+                    </div>
+                </div>
+                
+            </div>
+
+
+            <div class="container">
+                <div class="jumbotron" style="margin-top: 8%;padding-top: 20px;margin-left: 20px; margin-right: 20px">
+                    <div id="bal1">
+                        <h3>Balanço com dados finais - MVD</h3>
+                    </div>
+                    <div class="form-row" style="margin-top: 20px">
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira a densidade do óleo a 20°C</label>
+                            <input type="number" placeholder="g/cm³" class="form-control form-control-lg rho" name="rho">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira a massa de óleo</label>
+                            <input type="number" placeholder="em gramas" class="form-control form-control-lg temp" name="temp">
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 20px">
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira o percentual mássico de leves</label>
+                            <input type="number" placeholder="% de 0 até 100" class="form-control form-control-lg rho" name="rho">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira o percentual volumétrico de leves</label>
+                            <input type="number" placeholder="% de 0 até 100" class="form-control form-control-lg temp" name="temp">
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 20px">
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira a massa de destilado</label>
+                            <input type="number" placeholder="em gramas" class="form-control form-control-lg rho" name="rho">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira o volume de destilado</label>
+                            <input type="number" placeholder="em gramas" class="form-control form-control-lg temp" name="temp">
+                        </div>
+                    </div>
+
+                     <div class="form-row" style="margin-top: 20px">
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira a massa de resíduo</label>
+                            <input type="number" placeholder="em gramas" class="form-control form-control-lg rho" name="rho">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-12">
+                            <label class="col-form-label col-form-label-lg">Insira a densidade do resíduo a 20°C</label>
+                            <input type="number" placeholder="g/cm³" class="form-control form-control-lg temp" name="temp">
+                        </div>
+                    </div>
+
+                     <div class="form-row justify-content-center" style="margin-top: 2%">
+                        <div class="justify-content-center">
+                            <button style="font-size: 25px; width: 250px" type="button" class="btn btn-primary btn-lg" onclick="calcular()">Calcular</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+      <!--Script do bootstrap deve ficar no fim da página para renderizar corretamente-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    
+    </body>
+</html>
