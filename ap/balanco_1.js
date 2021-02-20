@@ -167,8 +167,8 @@ function densidade(SG_T,T){
 function balanco_mvd_simples(){
 	var rho_oleo = parseFloat(document.querySelector(".rho_oleo").value);
 	var m_oleo = parseFloat(document.querySelector(".m_oleo").value);
-	var percmas_lev = parseFloat(document.querySelector(".mas_lev").value);
-	var percvol_lev = parseFloat(document.querySelector(".vol_lev").value);
+	var percmas_lev = parseFloat(document.querySelector(".mas_lev").value)*0.01;
+	var percvol_lev = parseFloat(document.querySelector(".vol_lev").value)*0.01;
 	var mas_dest = parseFloat(document.querySelector(".mas_dest").value);
 	var vol_dest = parseFloat(document.querySelector(".vol_dest").value);
 	var mas_res = parseFloat(document.querySelector(".mas_res").value);
@@ -195,8 +195,8 @@ function balanco_mvd_simples(){
 	vol_oleo = m_oleo/rho_oleo;
 	api_amostra = densidade(rho_oleo,20)[1]
 
-	mas_lev = 0.01*percmas_lev*m_oleo;
-	vol_lev = 0.01*percvol_lev*vol_oleo;
+	mas_lev = percmas_lev*m_oleo;
+	vol_lev = percvol_lev*vol_oleo;
 
 	if(mas_lev == 0 || vol_lev == 0){
 		rho_lev = 0.0;
