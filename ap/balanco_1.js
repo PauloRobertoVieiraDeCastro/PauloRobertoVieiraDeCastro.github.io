@@ -3,7 +3,7 @@ function densidade(SG_T,T){
 	SG_20 = SG_T;
 	SG_20_n_menos_1 = 0;
 	do{
-		if(SG_20<= 0.497){
+		if(SG_20< 0.498){
 			a1 = -2462*Math.pow(10,-6);
 			a2 = 3215*Math.pow(10,-6);
 			b1 = -10.14*Math.pow(10,-6);
