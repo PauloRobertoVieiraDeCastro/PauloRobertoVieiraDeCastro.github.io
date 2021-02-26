@@ -82,13 +82,15 @@
 			p+=1;
 			
 			console.log(p)
-			i = 1 + Math.floor(Math.random() * 10)
-			j = Math.floor(Math.random() * 11)
+			
 
-			a = i*j - 4;
+			i = 2 + Math.floor(Math.random() * 19)
+			j = 2 + Math.floor(Math.random() * 19)
+
+			a = i*j - 2;
 			b = i*j;
-			c = i*(j+3)+4;
-			d = (i+1)*(j+1) + 5;
+			c = i*(j+1);
+			d = (i+1)*(j+1) + 2;
 			array = shuffleArray([a,b,c,d]);
 			document.querySelector(".quemsoueu").innerHTML = 'Pergunta ' + p + '  - Show da Tabuada';
 			document.querySelector(".perg").innerHTML = 'Quanto é '+i+' x '+j+' ? - Valendo R$ '+valor+',00';
