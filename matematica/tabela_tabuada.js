@@ -17,8 +17,8 @@
 	
 	valor = 1000;
 	p = 1;
-	i = 1 + Math.floor(Math.random() * 20)
-	j = Math.floor(Math.random() * 21)
+	i = 2 + Math.floor(Math.random() * 19)
+	j = 2 + Math.floor(Math.random() * 19)
 
 	a = i*j - 2;
 	b = i*j;
