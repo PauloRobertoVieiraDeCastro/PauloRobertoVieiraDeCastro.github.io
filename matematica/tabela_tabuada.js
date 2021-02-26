@@ -17,12 +17,12 @@
 	
 	valor = 1000;
 	p = 1;
-	i = 1 + Math.floor(Math.random() * 10)
-	j = Math.floor(Math.random() * 11)
+	i = 1 + Math.floor(Math.random() * 20)
+	j = Math.floor(Math.random() * 21)
 
-	a = i*j - 4;
+	a = i*j - 2;
 	b = i*j;
-	c = i*(j+3);
+	c = i*(j+1);
 	d = (i+1)*(j+1) + 2;
 	array = shuffleArray([a,b,c,d]);
 	console.log(array);
