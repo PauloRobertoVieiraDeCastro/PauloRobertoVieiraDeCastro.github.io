@@ -34,5 +34,7 @@
 }
 
 a:hover {
-  color: gray;
+  font-weight: bolder;
+  color: white;
+  font-size: 22px
 }
