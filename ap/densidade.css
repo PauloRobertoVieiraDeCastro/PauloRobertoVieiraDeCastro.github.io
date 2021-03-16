@@ -51,3 +51,10 @@ a:hover {
   color: white;
   font-size: 22px;	
 }
+
+@media(max-width: 1020px){
+	.tam{
+		min-width: 40px;
+		max-width: 90px;
+	}
+}
