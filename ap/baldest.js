@@ -164,6 +164,10 @@ function densidade(SG_T,T){
 }
 
 
+this.densidade_vetorP = []
+this.densidade_vetor = []
+
+
 
 
 this.contagem = 0;
@@ -172,22 +176,27 @@ function insRow(){
     entrada.className = 'form-control form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada.style = "margin-top: 10px;margin-left: 15px";
     entrada.placeholder = "Massa(g)";
+    entrada.type = "number";
     var entrada2 = document.createElement('input'); //crio um elemento do tipo input
     entrada2.className = 'form-control  form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada2.style = "margin-top: 10px; margin-left: 15px;";
-    entrada2.placeholder = "Densidade(g/cm³)"
+    entrada2.placeholder = "Densidade(g/cm³)";
+    entrada2.type = "number";
     var entrada3 = document.createElement('input'); //crio um elemento do tipo input
     entrada3.className = 'form-control form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada3.style = "margin-top: 10px; margin-left: 15px;";
-    entrada3.placeholder = "T medida(°C)"
+    entrada3.placeholder = "T medida(°C)";
+    entrada3.type = "number";
     var entrada4 = document.createElement('input'); //crio um elemento do tipo input
     entrada4.className = 'form-control  form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada4.style = "margin-top: 10px; margin-left: 15px";
-    entrada4.placeholder = "Pressão (mmHg)"
+    entrada4.placeholder = "Pressão (mmHg)";
+    entrada4.type = "number";
     var entrada5 = document.createElement('input'); //crio um elemento do tipo input
     entrada5.className = 'form-control  form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada5.style = "margin-top: 10px; margin-left: 15px";
-    entrada5.placeholder = "T topo(°C)"
+    entrada5.placeholder = "T topo(°C)";
+    entrada5.type = "number";
     //var entrada6 = document.createElement('input'); //crio um elemento do tipo input
     //entrada6.className = 'form-control  form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     //entrada6.style = "margin-top: 10px; margin-left: 15px";
@@ -228,6 +237,7 @@ function remRow(){
 
 function calculadora_final(){
 	if(this.contagem>=1){
+		this.TtM = []
 		vetor_massa = [];
 		vetor_vol = [];
 		vetor_topo = [];
@@ -237,10 +247,11 @@ function calculadora_final(){
 	    for(var i=1;i<=this.contagem;i++){
 	        soma_massa += parseFloat(document.getElementById(i).value);
 	        vetor_massa.push(document.getElementById(i).value); //anexando ao último elemento do vetor
-	        vetor_topo.push(document.getElementById(i+160).value); //anexando ao último elemento do vetor
+	        this.TtM.push(document.getElementById(i+160).value); //anexando ao último elemento do vetor
 	        vetor_pressao.push(document.getElementById(i+120).value); //anexando ao último elemento do vetor
 	        density = densidade(parseFloat(document.getElementById(i+40).value),parseFloat(document.getElementById(i+80).value));
-	        //console.log(density)
+	        this.densidade_vetor.push(density[1])
+	        
 	        soma_vol += parseFloat(document.getElementById(i).value)/density[0]; 
 	    }
 	    rho_dest1 = soma_massa/soma_vol;
@@ -359,28 +370,33 @@ function calculadora_final(){
 
 
 
-this.contagemP = 0;
+this.contagemP = 1000;
 function insRowP(){
 	var entradaP = document.createElement('input'); //crio um elemento do tipo input
     entradaP.className = 'form-control form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entradaP.style = "margin-top: 10px;margin-left: 15px";
     entradaP.placeholder = "Massa(g)";
+    entradaP.type = "number";
     var entrada2P = document.createElement('input'); //crio um elemento do tipo input
     entrada2P.className = 'form-control  form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada2P.style = "margin-top: 10px; margin-left: 15px;";
-    entrada2P.placeholder = "Densidade(g/cm³)"
+    entrada2P.placeholder = "Densidade(g/cm³)";
+    entrada2P.type = "number";
     var entrada3P = document.createElement('input'); //crio um elemento do tipo input
     entrada3P.className = 'form-control form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada3P.style = "margin-top: 10px; margin-left: 15px;";
     entrada3P.placeholder = "T medida(°C)"
+    entrada3P.type = "number";
     var entrada4P = document.createElement('input'); //crio um elemento do tipo input
     entrada4P.className = 'form-control  form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada4P.style = "margin-top: 10px; margin-left: 15px";
-    entrada4P.placeholder = "Pressão (mmHg)"
+    entrada4P.placeholder = "Pressão (mmHg)";
+    entrada4P.type = "number";
     var entrada5P = document.createElement('input'); //crio um elemento do tipo input
     entrada5P.className = 'form-control  form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     entrada5P.style = "margin-top: 10px; margin-left: 15px";
-    entrada5P.placeholder = "T topo(°C)"
+    entrada5P.placeholder = "T topo(°C)";
+    entrada5P.type = "number";
     //var entrada6 = document.createElement('input'); //crio um elemento do tipo input
     //entrada6.className = 'form-control  form-row col-lg-3 col-md-3 justify-content-center tam'; //coloco uma classe do bootstrap
     //entrada6.style = "margin-top: 10px; margin-left: 15px";
@@ -419,22 +435,26 @@ function remRowP(){
 	this.contagemP -= 1;
 }
 
+
+
 function calculadora_final_POT(){
-	if(this.contagemP>=1){
+	if(this.contagemP>=1001){
 		vetor_massaP = [];
+		this.TtP = []
 		vetor_volP = [];
 		vetor_topoP = [];
 		vetor_pressaoP = [];
 	    var soma_massaP = 0;
 	    var soma_volP = 0
-	    for(var i=1;i<=this.contagemP;i++){
-	        soma_massaP += parseFloat(document.getElementById(i).value);
-	        vetor_massaP.push(document.getElementById(i).value); //anexando ao último elemento do vetor
-	        vetor_topoP.push(document.getElementById(i+160).value); //anexando ao último elemento do vetor
-	        vetor_pressaoP.push(document.getElementById(i+120).value); //anexando ao último elemento do vetor
-	        densityP = densidade(parseFloat(document.getElementById(i+40).value),parseFloat(document.getElementById(i+80).value));
-	        //console.log(density)
-	        soma_volP += parseFloat(document.getElementById(i).value)/densityP[0]; 
+	    for(var j=1001;j<=this.contagemP;j++){
+	        soma_massaP += parseFloat(document.getElementById(j).value);
+	        vetor_massaP.push(document.getElementById(j).value); //anexando ao último elemento do vetor
+	        this.TtP.push(document.getElementById(j+160).value); //anexando ao último elemento do vetor
+	        vetor_pressaoP.push(document.getElementById(j+120).value); //anexando ao último elemento do vetor
+	        densityP = densidade(parseFloat(document.getElementById(j+40).value),parseFloat(document.getElementById(j+80).value));
+	        this.densidade_vetorP.push(densityP[1]);
+	        soma_volP += parseFloat(document.getElementById(j).value)/densityP[0]; 
+	        console.log(document.getElementById(j).value)
 	    }
 	    rho_dest1P = soma_massaP/soma_volP;
 	    
@@ -515,8 +535,56 @@ function calculadora_final_POT(){
 	}else{
 		alert("Você precisa de pelo menos uma entrada");
 	}
-	
-    
+	    
 }
+
+function PEV(){
+	var ctx = document.getElementById('myChart').getContext('2d');
+	this.TtM.concat(this.TtP);
+	this.densidade_vetor.concat(this.densidade_vetorP);
+	console.log(this.TtM);
+	var li = []
+    for (let i = 0; i < this.TtM.length; i++) {
+        var obj = {};
+        obj['x'] = this.densidade_vetor[i];
+        obj['y'] = this.TtM[i];
+        li.push(obj)
+    }
+
+    var chart = new Chart(ctx, {
+            // The type of chart we want to create
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Curva API x Temperatura',
+                data: li,
+                backgroundColor: 'rgb(255, 99, 132)',
+                pointRadius: 4,
+            }]
+        },
+
+            // Configuration options go here
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'linear',
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Densidade"
+                    }, 
+                }],
+
+                yAxes: [{
+                    type: 'linear',
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Temperatura"
+                    },
+                }],
+            }
+        }
+    });
+}
+
 
 
