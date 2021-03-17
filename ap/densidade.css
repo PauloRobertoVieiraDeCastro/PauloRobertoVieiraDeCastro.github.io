@@ -52,16 +52,16 @@ a:hover {
   font-size: 22px;	
 }
 
-@media(max-width: 1020px){
+@media(max-width: 1040px){
 	.tam{
 		min-width: 40px;
 		max-width: 90px;
 	}
 }
 
-@media(min-width: 1020px){
+@media(min-width: 1040px){
 	.tam{
 		min-width: 90px;
-		max-width: 160px;
+		max-width: 165px;
 	}
 }
