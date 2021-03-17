@@ -58,3 +58,10 @@ a:hover {
 		max-width: 90px;
 	}
 }
+
+@media(min-width: 1020px){
+	.tam{
+		min-width: 90px;
+		max-width: 150px;
+	}
+}
