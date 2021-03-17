@@ -291,13 +291,13 @@
                     
 
                     <div class="form-row" style="margin-top: 20px">
-                        <div class="form-group col-lg-6 col-md-12" id="form">
+                        <div class="form-group col-lg-6 col-md-12 justify-content-center" id="form">
                             <label class="col-form-label col-form-label-lg">Adicionar frações</label>
-                            <input style="font-size: 25px; width: 250px;margin-left: 20px" type="button" class="btn btn-primary btn-lg" value="Adicionar" onclick="insRow()">
+                            <input style="font-size: 25px; width: 250px;margin-left: 20px" type="button" class="btn btn-primary btn-lg justify-content-center" value="Adicionar" onclick="insRow()">
                         </div>
 
-                        <div class="form-group col-lg-6 col-md-12" id="form">
-                            <label class="col-form-label col-form-label-lg">Remover frações</label>
+                        <div class="form-group col-lg-6 col-md-12 justify-content-center" id="form">
+                             <label class="col-form-label col-form-label-lg">Remover frações</label>
                              <input style="font-size: 25px; width: 250px; margin-left: 20px" type="button" class="btn btn-primary btn-lg" value="Remover" onclick="remRow()">
                         </div>
                     </div>
@@ -512,12 +512,28 @@
                           </div>
                         </div>
 
-
-
                     </div>
+
+
+                    <div class="container">
+                        <div class="jumbotron" style="margin-top: 8%;padding-top: 20px;margin-left: 20px; margin-right: 20px">
+                            <div id="bal1">
+                                <h3>Gráfico de PEV</h3>
+                            </div>
+                            <div class="form-row justify-content-center" style="margin-top: 2%">
+                                    <div class="justify-content-center">
+                                        <button style="font-size: 25px; width: 250px" type="button" class="btn btn-primary btn-lg" onclick="PEV()">Plotar PEV</button>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+
                 </div>
 
-        <canvas id="myChart"></canvas>
+        
       <!--Script do bootstrap deve ficar no fim da página para renderizar corretamente-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
