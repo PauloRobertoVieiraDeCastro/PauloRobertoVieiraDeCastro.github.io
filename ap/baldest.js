@@ -165,7 +165,6 @@ function densidade(SG_T,T){
 
 
 this.densidade_vetorP = []
-this.densidade_vetor = []
 
 
 
@@ -237,7 +236,8 @@ function remRow(){
 
 function calculadora_final(){
 	if(this.contagem>=1){
-		this.TtM = []
+		this.TtM = [];
+		this.densidade_vetor = []
 		vetor_massa = [];
 		vetor_vol = [];
 		vetor_topo = [];
@@ -440,7 +440,8 @@ function remRowP(){
 function calculadora_final_POT(){
 	if(this.contagemP>=1001){
 		vetor_massaP = [];
-		this.TtP = []
+		this.TtP = [];
+		this.densidade_vetorP = []
 		vetor_volP = [];
 		vetor_topoP = [];
 		vetor_pressaoP = [];
@@ -489,8 +490,6 @@ function calculadora_final_POT(){
 		delta1P = {'Destilado':Math.abs(delta_dest1P-api_amostra1P),'Resíduo':Math.abs(delta_res1P-api_amostra1P)}
 		
 	
-	    console.log(rho_dest1P);
-
 	    //ATE AQUI OK
 
 	    document.querySelector(".onde_perda1P").innerHTML = 'Perdas no '+ lowestValueAndKey(delta1P)[0] + ' de ' + lowestValueAndKey(delta1P)[1].toFixed(2) + ' °API';
@@ -540,14 +539,14 @@ function calculadora_final_POT(){
 
 function PEV(){
 	var ctx = document.getElementById('myChart').getContext('2d');
-	this.TtM.concat(this.TtP);
-	this.densidade_vetor.concat(this.densidade_vetorP);
-	console.log(this.TtM);
+	var t_finala = this.TtM.concat(this.TtP);
+	var dens_final = this.densidade_vetor.concat(this.densidade_vetorP);
+	console.log(dens_final);
 	var li = []
-    for (let i = 0; i < this.TtM.length; i++) {
+    for (let i = 0; i < t_finala.length; i++) {
         var obj = {};
-        obj['x'] = this.densidade_vetor[i];
-        obj['y'] = this.TtM[i];
+        obj['x'] = dens_final[i];
+        obj['y'] = t_finala[i];
         li.push(obj)
     }
 
@@ -570,7 +569,7 @@ function PEV(){
                     type: 'linear',
                     scaleLabel: {
                         display: true,
-                        labelString: "Densidade"
+                        labelString: "Densidade (°API)"
                     }, 
                 }],
 
@@ -578,7 +577,7 @@ function PEV(){
                     type: 'linear',
                     scaleLabel: {
                         display: true,
-                        labelString: "Temperatura"
+                        labelString: "Temperatura (°C)"
                     },
                 }],
             }
