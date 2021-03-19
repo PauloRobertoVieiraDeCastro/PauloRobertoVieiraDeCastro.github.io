@@ -247,7 +247,104 @@
                 <div id="sedimentador">
                     <h3>Dimensionamento de sedimentadores</h3>
                 </div>
-            </div>
+
+                <div class="form-row" style="margin-top: 20px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a densidade da partícula</label>
+                        <input type="number" placeholder="em kg/m³" class="form-control form-control-lg rho_S" name="rho_S">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a vazão</label>
+                        <input type="number" placeholder="em m³/s" class="form-control form-control-lg Q_S" name="Q_S">
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 20px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Concentração de sólido na alimentação</label>
+                        <input type="number" placeholder="em kg/m³" class="form-control form-control-lg csa_S" name="csa_S">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Concentração de sólido no lodo</label>
+                        <input type="number" placeholder="em kg/m³" class="form-control form-control-lg csl_S" name="csl_S">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center center" style="margin-top: 20px">
+                    <div class="form-group col-lg-12 col-md-12 justify-content-center">
+                        <label class="col-form-label-lg justify-content-center center" style="min-width: 300px; font-weight: bold">Dados do teste da proveta</label>
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 20px" id="bot_S">
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center" id="formS">
+                        <input style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg abc" value="Adicionar" onclick="insRowS()" id="botao_addS">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center" id="form2S">
+                        <input style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg abc" value="Remover" onclick="remRowS()" id="botao_remS">
+                    </div>
+                </div>
+
+                <div class="form-row justify-content-center" style="margin-top: 2%">
+                    <div class="justify-content-center">
+                            <button style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg" onclick="calcularSedimentador()">Calcular</button>
+                    </div>
+                </div>
+
+                <div id="Inter">
+                    <div class="form-row justify-content-center" id="teste_sedimentador" style="margin-top: 5%;"></div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center">
+                        <div class="row justify-content-center" style="margin-top: 10px; font-size: 20px; font-weight: bold">
+                            Dimensões mínimas do sedimentador
+                        </div>
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-6 col-md-6 justify-content-center tam_letra">
+                                <div>A<sub>min</sub> (m²)</div>
+                                <div class="amin_s"></div>
+                            </div>
+
+                            <div class="form-group col-lg-6 col-md-6 justify-content-center tam_letra">
+                                <div>D<sub>min</sub> (m)</div>
+                                <div class="dmin_s"></div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center" style="margin-top: 10px; font-size: 20px; font-weight: bold">
+                            Dimensões de projeto do sedimentador
+                        </div>
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-4 col-md-4 justify-content-center tam_letra">
+                                <div>A<sub>proj</sub> (m²)</div>
+                                <div class="aproj_s"></div>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-4 justify-content-center tam_letra">
+                                <div>D<sub>proj</sub> (m)</div>
+                                <div class="dproj_s"></div>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-4 justify-content-center tam_letra">
+                                <div>H<sub>proj</sub> (m)</div>
+                                <div class="hproj_s"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center">
+                        <div class="row justify-content-center" style="margin-top: 10px; font-size: 20px; font-weight: bold">
+                            Curva de sedimentação - teste da proveta
+                        </div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                
+            </div> 
         </div>  
 
         
@@ -255,6 +352,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>     
         <script type="text/javascript" src="ciclone.js"></script>  
+        <script type="text/javascript" src="sedimentador.js"></script>  
 
     </body>
 </html>
