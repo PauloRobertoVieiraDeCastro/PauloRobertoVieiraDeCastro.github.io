@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Dimensionamento de equipamentos</title>
+        <meta charset="utf-8">
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fontenele/bootstrap-navbar-dropdowns@5.0.2/dist/css/bootstrap-navbar-dropdowns.min.css">
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       
+        <meta name="viewport" content="width=device-width;initial-scale=1;shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="Equipamentos.css">
+        <link rel="shortcut icon" href="eng.ico"/>
+        
+        <script src="https://unpkg.com/mathjs/lib/browser/math.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+        <script type=" https://www.numericjs.com/lib/numeric-1.2.6.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top get">          
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudo-navbar" style="border-style: solid 8px; color: white">
+                <span class="navbar-toggler-icon" style="border-style: solid 8px; color: black"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="conteudo-navbar">
+                <div class="container navegada col-lg-2">
+                    <div class="col-lg-12">
+                        <a class="nav-link estilo" href="#ciclone" style="font-weight: bolder;">Ciclone</a>
+                    </div>
+                </div>
+
+                <div class="container nav-item dropdown navegada col-lg-2">
+                    <div class="col-lg-12">
+                        <a class="nav-link estilo" href="#bal1" style="font-weight: bolder;">
+                            Hidrociclone
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="container nav-item dropdown navegada col-lg2">
+                    <div class="col-lg-12">
+                        <a class="nav-link estilo" href="#sedimentador" style="font-weight: bolder;">
+                            Sedimentador
+                        </a>
+                    </div>
+                </div>
+
+                <div class="container nav-item dropdown navegada col-lg-2">
+                    <div class="col-lg-12">
+                        <a class="nav-link estilo" href="#bal1" style="font-weight: bolder;">
+                            Bomba
+                        </a>
+                    </div>
+                </div>
+
+                <div class="container nav-item dropdown navegada col-lg-2">
+                    <div class="col-lg-12">
+                        <a class="nav-link estilo" href="#bal1" style="font-weight: bolder;">
+                            Filtro
+                        </a>
+                    </div>
+                </div>                
+            </div>
+        </nav>
+
+
+        <div class="container">
+            <div class="jumbotron" style="margin-top: 120px;padding-top: 30px;margin-left: 20px; margin-right: 20px">
+                <div id="ciclone">
+                    <h3>Dimensionamento de ciclones</h3>
+                </div>
+
+                <div class="form-row" style="margin-top: 20px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a densidade da partícula</label>
+                        <input type="number" placeholder="em kg/m³" class="form-control form-control-lg rho_C" name="rho_C">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a vazão</label>
+                        <input type="number" placeholder="em m³/s" class="form-control form-control-lg Q_C" name="Q_C">
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 10px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a velocidade de projeto</label>
+                        <input type="number" placeholder="em m/s" class="form-control form-control-lg V_C" name="V_C">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a eficiência do ciclone</label>
+                        <input type="number" placeholder="em %" class="form-control form-control-lg EFI_C" name="EFI_C">
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 10px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a temperatura do ar</label>
+                        <input type="number" placeholder="em °C" class="form-control form-control-lg T_AR" name="T_AR">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a pressão do ar</label>
+                        <input type="number" placeholder="em Pa" class="form-control form-control-lg P_AR" name="P_AR">
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 20px" id="d_ggs2">
+                    <div class="form-group col-lg-6 col-md-12" id="d_ggs">
+                        <label class="col-form-label col-form-label-lg">Insira o D<sub>100</sub></label>
+                        <input type="number" name="gluteo" placeholder="em micra" class="form-control form-control-lg gluteo" id="d100c">
+                    </div>   
+
+                    <div class="form-group col-lg-6 col-md-12" id="m_ggs">
+                        <label class="col-form-label col-form-label-lg">Insira o m</label>
+                        <input type="number" name="gluteo" class="form-control form-control-lg gluteo" id="m">
+                    </div>   
+                    
+                </div>
+
+                <div class="form-row" style="margin-top: 20px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Selecione o modelo de distribuição de partículas</label>
+                        <select name="integ" class="form-control form-control-lg integ" id="integ" required>
+                            <option value="2" name="NR">GGS</option>
+                            <option value="1" name="NR">RRB</option>
+                            <option value="0" name="NR">Por pontos</option>
+                        </select>  
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-row" style="margin-top: 20px" id="bot_cic">
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center" id="form">
+                        <input style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg abc" value="Adicionar" onclick="insRow()" id="botao_add">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center" id="form2">
+                        <input style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg abc" value="Remover" onclick="remRow()" id="botao_rem">
+                    </div>
+                </div>
+
+
+                <div class="form-row justify-content-center" style="margin-top: 2%">
+                    <div class="justify-content-center">
+                            <button style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg" onclick="calcular()">Calcular</button>
+                    </div>
+                </div>
+
+
+                <div id="Gremio">
+                    <div class="form-row justify-content-center" id="teste_ciclone" style="margin-top: 5%;"></div>
+                </div>
+
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center">
+                        <div class="row justify-content-center" style="margin-top: 10px; font-size: 20px; font-weight: bold">
+                            Medida do(s) ciclone(s) e características operacionais
+                        </div>
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>D<sub>c</sub> (m)</div>
+                                <div class="dd_c"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>B<sub>c</sub> (m)</div>
+                                <div class="bb_c"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>H<sub>c</sub> (m)</div>
+                                <div class="hh_c"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>L<sub>c</sub> (m)</div>
+                                <div class="ll_c"></div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>Z<sub>c</sub> (m)</div>
+                                <div class="zz_c"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>S<sub>c</sub> (m)</div>
+                                <div class="ss_c"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>D<sub>o</sub> (m)</div>
+                                <div class="dd_o"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>D<sub>u</sub> (m)</div>
+                                <div class="dd_u"></div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-4 col-md-4 justify-content-center tam_letra">
+                                <div>Pressão (Pa)</div>
+                                <div class="pressure"></div>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-4 justify-content-center tam_letra">
+                                <div>Potência (W)</div>
+                                <div class="watt"></div>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-4 justify-content-center tam_letra">
+                                <div>N° de ciclones</div>
+                                <div class="n_cic"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center">
+                        <div class="row justify-content-center" style="margin-top: 10px; font-size: 20px; font-weight: bold">
+                            Esquema de um ciclone
+                        </div>
+                        <img class="img-responsive center" style="margin-top: 30px;"src="cic.png" alt="Responsive image">
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>  
+
+
+        <div class="container">
+            <div class="jumbotron" style="margin-top: 120px;padding-top: 30px;margin-left: 20px; margin-right: 20px">
+                <div id="sedimentador">
+                    <h3>Dimensionamento de sedimentadores</h3>
+                </div>
+            </div>
+        </div>  
+
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>     
+        <script type="text/javascript" src="ciclone.js"></script>  
+
+    </body>
+</html>
