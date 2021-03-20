@@ -18,6 +18,52 @@ nav{
   }
 }
 
+@media(min-width: 1020px){
+  .centered {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px; 
+    color: white; 
+    min-width: 300px; 
+    font-weight: bold;
+  }
+
+  .centered2 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: white;
+    min-width: 800px;
+  }
+}
+
+@media(max-width: 1020px){
+  .centered {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px; 
+    color: white; 
+    min-width: 300px; 
+    font-weight: bold;
+  }
+
+  .centered2 {
+    position: absolute;
+    top: 30%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    color: white;
+    min-width: 600px;
+  }
+}
+
 @media(max-width: 1020px){
   .navegada{
     color: white;
@@ -25,6 +71,10 @@ nav{
   }
 }
 
+.imagem{
+  background-image: url("impri.jpg");
+  background-size: cover;
+}
 
 .fgo{
 	padding-right: 20px;
@@ -34,6 +84,30 @@ nav{
 	color: white;
 	font-size: 18px;
 }
+
+
+.typing-animation {
+        animation: blinkCursor 500ms steps(40) infinite normal,
+          typing 4s steps(40) 1s normal both;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 16em;
+        }
+      }
+
+      @keyframes blinkCursor {
+        from {
+          border-right-color: rgba(255, 255, 255, 0.75);
+        }
+        to {
+          border-right-color: transparent;
+        }
+      }
 
 .navbar-toggler {
   border-color: #ffffff;
