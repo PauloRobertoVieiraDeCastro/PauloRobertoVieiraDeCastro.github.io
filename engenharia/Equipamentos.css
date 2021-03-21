@@ -86,10 +86,10 @@ a:hover {
 		min-width: 60px;
 		max-width: 190px;
 	}
-
 	.abc{
-		 margin-left: 29%;
+		 margin-left: 3%;
 	}
+	
 }
 
 @media(min-width: 1120px){
@@ -99,8 +99,21 @@ a:hover {
 	}
 
 	.abc{
-		 margin-left: 140px;
+		 margin-left: 3%;
 	}
+	
+}
+
+@media(max-width: 760px){
+	.tam{
+		min-width: 290px;
+		max-width: 360px;
+	}
+
+	.abc{
+		 margin-left: 0%;
+	}
+	
 }
 
 .product .img-responsive {
@@ -116,6 +129,12 @@ a:hover {
 
 img {
     background-color : blue;
+}
+
+@media(max-width: 760px){
+	.acd{
+		margin-left: -15%;
+	}
 }
 
 .tam_letra{
