@@ -2,48 +2,45 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import math
-import seaborn as sns
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, LSTM
 import warnings
+import seaborn as sns
 warnings.filterwarnings("ignore")
-import statsmodels.api as sm
-import statsmodels.formula.api as smf
 import yfinance as yf
 import pandas_datareader as data
 from pandas_datareader import data as wb
 import matplotlib.dates as mdates
 from scipy.stats import norm
-#from mplfinance import candlestick_ohlc
 import plotly.express as px
 import datetime as dt
 import mplfinance as mpf
 from statsmodels.tsa.seasonal import seasonal_decompose
-from pmdarima.arima import auto_arima
-from sklearn.metrics import mean_absolute_error
-#from fbprophet import Prophet
 import streamlit as st
-from PIL import Image
 from pyti.bollinger_bands import upper_bollinger_band as bb_up
 from pyti.bollinger_bands import middle_bollinger_band as bb_mid
 from pyti.bollinger_bands import lower_bollinger_band as bb_low
+from sklearn.model_selection import cross_val_score, train_test_split
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, LSTM
+from bs4 import BeautifulSoup
+import requests
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.markdown("<h2 style='margin-top: -40px; font-family: Helvetica; font-weight:bold; margin-left: 140px'>Análise descritiva</h2>", unsafe_allow_html=True)
-#st.beta_set_page_config(page_title='your_title', page_icon = favicon, layout = 'wide', initial_sidebar_state = 'auto')
-#st.title("""Análise descritiva""")
-#image = Image.open("C:/Users/rober/Desktop/Python/Mercado Financeiro/acoes.jpg")
-#st.image(image,use_column_width=True)
+
 
 #---------------sidebar---------------------------------------------------------------------------------------------------------------------------------------
 
-
+contador = 0
 st.sidebar.header("Dados de entrada")
 acao = st.sidebar.selectbox('Selecione a ação',
-                              ( 'PETR3.SA', 'PETR4.SA','CSAN3.SA','BRKM5.SA','UGPA3.SA',"EQTL3.SA","BBAS3.SA",'BBSE3.SA','BBDC3.SA','BBDC4.SA','ITSA4.SA',
-                                'ABEV3.SA','VIVT3.SA','OIBR4.SA','MGLU3.SA','LAME4.SA','LREN3.SA','RENT3.SA','GGBR4.SA','CCRO3.SA','EMBR3.SA','SBSP3.SA',
-                                'MRVE3.SA','IBOVESPA','BRENT','DÓLAR',"EURO"))
+                              ( 'PETR3.SA', 'PETR4.SA','CSAN3.SA','BRKM5.SA','UGPA3.SA','KLBN11.SA','CYRE3.SA',"EQTL3.SA",
+                                'ELET3.SA','USIM3.SA',"BBAS3.SA",'SANB11.SA','BBSE3.SA','BBDC3.SA','BBDC4.SA','ITSA4.SA','CIEL3.SA',
+                                'BPAC11.SA','IGTA3.SA','PRIO3.SA','BRML3.SA',
+                                'ABEV3.SA','VIVT3.SA','OIBR4.SA','BTOW3.SA','MGLU3.SA','LAME4.SA','LREN3.SA',
+                                'RENT3.SA','RADL3.SA','GGBR4.SA','CCRO3.SA','EMBR3.SA','SBSP3.SA',
+                                'MRVE3.SA','JBSS3.SA','MRFG3.SA','QUAL3.SA','IBOVESPA','BRENT','DÓLAR',"EURO"))
 
 
 if(acao == 'IBOVESPA'):
@@ -56,34 +53,38 @@ if(acao == 'EURO'):
     acao = 'EURBRL=X'
     
 modelo = st.sidebar.selectbox('Selecione o modelo preditivo',
-                              ('ARIMA','Monte Carlo'))
+                              ('Monte Carlo','Redes Neurais'))
 
-x = np.arange(1,41)
-tempo = st.sidebar.select_slider('Selecione o tempo de predição em semanas',options=list(x))
+x = np.arange(3,31)
+tempo = st.sidebar.select_slider('Selecione o tempo de predição em dias',options=list(x))
 col1, col2, col3 = st.sidebar.beta_columns(3)
 
 
 submit = col2.button('Calcular')
 
+
 #--------------------------------------ANALISE ESTATISTICA BASICA-----------------------------------------------------------------------------------------------
 
 df = data.DataReader(name = acao, data_source='yahoo', start='2018-06-06', end=dt.datetime.now())
 st.header("Estatística descritiva da ação "+acao)
-st.write(df.describe())
-figura = px.line()
-figura2 = px.line(title="")
-st.header("Histórico de fechamento da "+acao)
-figura.add_scatter(x=df['Adj Close'].index,y=df['Adj Close'],name=acao)
-figura.update_layout(autosize=True,
-                  width=800, height=450,
-                  margin=dict(l=40, r=40, b=40, t=40))
-figura2.add_scatter(x=df['Volume'].index,y=df['Volume'],name=acao)
-figura2.update_layout(autosize=True,
-                  width=800, height=450,
-                  margin=dict(l=40, r=40, b=40, t=40))
-st.plotly_chart(figura,use_container_width=False)
-st.header("Histórico de volumes da "+acao)
-st.plotly_chart(figura2,use_container_width=False)
+
+st.write(df.loc[:, df.columns != 'Volume'].describe())
+st.markdown("<p style='margin-bottom: 40px'>", unsafe_allow_html=True)
+
+plt.figure(figsize=(16,8))
+plt.title('Histórico de fechamento da '+acao, fontsize=26)
+plt.xlabel('Data', fontsize=22)
+plt.xticks(fontsize=16)
+plt.plot(df['Adj Close'],color='r')
+st.pyplot()
+
+plt.figure(figsize=(16,8))
+plt.title('Histórico de volumes negociados da '+acao, fontsize=26)
+plt.xlabel('Data', fontsize=22)
+plt.xticks(fontsize=16)
+plt.plot(df['Volume'],color='r')
+st.pyplot()
+
 
 col10, col20, col30 = st.sidebar.beta_columns(3)
 
@@ -143,20 +144,14 @@ stock['Classic RSI'] = 100 - (100 / (1 + stock['Classic RS']))
 #st.write(stock.iloc[:].diff())
 #stock = stock[1:] # remove first row once it does not have a variation
 #stock.head()
-plt.title("IFR PETR4")
-stock['Classic RSI'].plot()
-plt.axhline(y=30, color='black', linestyle='--')
-plt.axhline(y=70, color='black', linestyle='--')
-plt.axhspan(30, 70, color='thistle')
-plt.ylim(0, 100)
+#plt.title("IFR PETR4")
+plt.figure(figsize=(16,8))
+plt.title('Índice de Força Relativa da ação '+acao, fontsize=26)
+plt.xlabel('Data', fontsize=22)
+plt.xticks(fontsize=16)
+plt.plot(stock['Classic RSI'],color='r')
+st.pyplot()
 
-figura10 = px.line(title=" ")
-st.header("Avaliação de força relativa (IFR) da "+acao)
-figura10.add_scatter(x=stock.index,y=stock['Classic RSI'],name=acao)
-figura10.update_layout(autosize=True,
-                  width=800, height=450,
-                  margin=dict(l=40, r=40, b=40, t=40))
-st.plotly_chart(figura10,use_container_width=False)
 
 
 #-------------------------TENDÊNCIA PELO ARIMA-----------------------------------------------------------------
@@ -164,14 +159,49 @@ st.header("Avaliação de tendência pelo algoritmo ARIMA da ação "+acao)
 z = int(len(df['Adj Close'])/2)
 decomposicao = seasonal_decompose(df['Adj Close'],freq=20)
 tendencia = decomposicao.trend
-#st.write(tendencia)
-figura11 = px.line(title=" ")
-figura11.add_scatter(x=tendencia.index,y=tendencia.iloc[:],name=acao)
-figura11.update_layout(autosize=True,
-                  width=800, height=450,
-                  margin=dict(l=40, r=40, b=40, t=40))
-st.plotly_chart(figura11,use_container_width=False)
+plt.figure(figsize=(16,8))
+plt.title('Tendência de valoração da ação '+acao, fontsize=26)
+plt.xlabel('Data', fontsize=22)
+plt.xticks(fontsize=16)
+plt.plot(tendencia.iloc[:],color='r')
+st.pyplot()
 
+
+
+#--------------------------------------MEDIDAS DE RETORNO----------------------------------------------------------------------
+st.markdown("<hr style='margin-bottom: 40px'>", unsafe_allow_html=True)
+st.markdown("<h2 style='margin-top: -40px; font-family: Helvetica; font-weight:bold; margin-left: 140px'>Análise de retorno</h2>", unsafe_allow_html=True)
+st.header("Retorno da ação "+acao)
+st.write(100*df.loc[:, df.columns != 'Volume'].pct_change().describe())
+plt.figure(figsize=(16,8))
+plt.title('Retorno percentual diário da ação '+acao, fontsize=26)
+plt.xlabel('Data', fontsize=22)
+plt.xticks(fontsize=16)
+plt.plot(100*df['Adj Close'].pct_change(),color='r')
+st.pyplot()
+retorno_acum = 1
+ret = []
+for i in range(1,len(df['Adj Close'])):
+    retorno_acum *= (1 + df['Adj Close'].pct_change()[i])
+    ret.append(100*retorno_acum - 100)
+
+xf = pd.DataFrame(ret)
+xf.columns = ['Retorno percentual']
+xf.index = df.index[1:]
+plt.figure(figsize=(16,8))
+plt.title('Retorno acumulado da ação '+acao, fontsize=26)
+plt.ylabel("Retorno (%)", fontsize=22)
+plt.xlabel('Data', fontsize=22)
+plt.xticks(fontsize=16)
+plt.plot(xf,color='r')
+st.pyplot()
+
+plt.figure(figsize=(16,8))
+plt.title('Distribuição do retorno diário da ação '+acao, fontsize=26)
+plt.xlabel('Data', fontsize=22)
+plt.xticks(fontsize=16)
+sns.distplot(100*df['Adj Close'].pct_change(), bins=100)
+st.pyplot()
 
 
 #--------------------------------------MEDIDAS DE VOLATILIDADE----------------------------------------------------------------------
@@ -183,20 +213,43 @@ data1 = pd.DataFrame(df['Adj Close'].copy())
 data1["Max"] = data1['Adj Close'].cummax()
 data1["Delta"] = data1["Max"] - data1["Adj Close"]
 data1["Drawdown"] = 100 * (data1["Delta"] / data1["Max"])
-figura12 = px.line(title=" ")
-figura12.add_scatter(x=data1.index,y=data1['Drawdown'],name=acao)
-figura12.update_layout(autosize=True,
-                  width=800, height=450,
-                  margin=dict(l=40, r=40, b=40, t=40))
-st.plotly_chart(figura12,use_container_width=False)
+plt.figure(figsize=(16,8))
+plt.title('Drawdown da ação '+acao, fontsize=26)
+plt.xlabel('Data', fontsize=22)
+plt.xticks(fontsize=16)
+plt.plot(data1['Drawdown'],color='r')
+plt.legend(['Drawdown'], loc='lower right')
+st.pyplot()
+#figura12 = px.line(title=" ")
+#figura12.add_scatter(x=data1.index,y=data1['Drawdown'],name=acao)
+#st.plotly_chart(figura12,use_container_width=True)
 
 #------------------------covariancia------------------------------------------------------------------------------------------------------------------------------
 act = ('PETR3.SA', 'PETR4.SA','CSAN3.SA','BRKM5.SA','UGPA3.SA',"EQTL3.SA","BBAS3.SA",
        'BBSE3.SA','BBDC3.SA','BBDC4.SA','ITSA4.SA','ABEV3.SA','VIVT3.SA','OIBR4.SA',
        'MGLU3.SA','LAME4.SA','LREN3.SA','RENT3.SA','GGBR4.SA','CCRO3.SA','EMBR3.SA',
-       'SBSP3.SA','MRVE3.SA')
+       'SBSP3.SA','MRVE3.SA','KLBN11.SA','CYRE3.SA','SANB11.SA','QUAL3.SA','JBSS3.SA',
+       'MRFG3.SA','CIEL3.SA','RADL3.SA','BTOW3.SA','BPAC11.SA','ELET3.SA','USIM3.SA',
+       'IGTA3.SA','PRIO3.SA','BRML3.SA')
 
 if(acao in act):
+    #calculando indices por web scraping ------------------------------------------------
+    url = "https://br.financas.yahoo.com/quote/"+acao
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    h = soup.find_all('span', class_="Trsdu(0.3s)")
+
+    IPL = str(h).split(' data-reactid="93">')[1].split("</")[0]
+    st.sidebar.write("Índice de preço sobre lucro (P/L): "+IPL)
+
+    LPA = str(h).split(' data-reactid="98">')[1].split("</")[0]
+    st.sidebar.write("Índice lucro por ação (LPA): "+LPA)
+
+
+
+    CAPT = str(h).split(' data-reactid="83">')[1].split("</")[0]
+    st.sidebar.write("Capitalização de mercado: "+CAPT)
+
     datak = pd.DataFrame()
     tickers = [acao,'^BVSP']
 ## Coletando os dados do Yahoo Finance no período estipulado (dados de fechamento)
@@ -232,36 +285,115 @@ if(acao in act):
 st.markdown("<hr style='margin-bottom: 40px'>", unsafe_allow_html=True)
 st.markdown("<h2 style='margin-top: -40px; font-family: Helvetica; font-weight:bold; margin-left: 140px'>Análise preditiva</h2>", unsafe_allow_html=True)
 #-------------------------------------------PREVISAO---------------------------------------------------------------------------------------------------------------
-def arima(df):
-    dff1 = df['Adj Close']
-    train = dff1[:int(0.7*len(dff1))]
-    teste = dff1[int(0.7*len(dff1)):]
-    dias = len(teste)
-    dia_f = teste.tail(1).index[0]
-    #st.sidebar.write(dia_f)
-    test = pd.date_range(dia_f, periods=int(7*tempo))#.tolist()#dff1[int(0.7*len(dff1)):]
-    #st.sidebar.write(test)
-    #st.sidebar.write(7*tempo)
-    modelo = auto_arima(train,supress_warnings=True,error_action='ignore')
-    previsao = pd.DataFrame(modelo.predict(n_periods = int(7*tempo)),index=pd.to_datetime(test,unit='D'))
-    previsao.rename(columns={0:'Valor da ação'}, inplace=True)
-    previsao['Dat'] = previsao.index
+def redes_neurais(df,contador):
+    if(contador<1):
+        dff = df['2019-06-06':]
+        data = dff.filter(['Adj Close'])
+        #Convert the dataframe to a numpy array
+        dataset = data.values
+        #Get the number of rows to train the model on
+        training_data_len = math.ceil( len(dataset) * 0.8 )
+        #Scale the data
+        scaler = MinMaxScaler(feature_range=(0,1))
+        scaled_data = scaler.fit_transform(dataset)
+        #Create the training data set 
+        #Create the scaled training data set
+        train_data = scaled_data[0:training_data_len, :]
+        resto = math.ceil( len(dataset) * 0.2 )
+        #Split the data into x_train and y_train data sets
+        x_train = []
+        y_train = []
+        #We create a loop
+        for i in range(resto, len(train_data)):
+            x_train.append(train_data[i-resto:i, 0]) #Will conaint 60 values (0-59)
+            y_train.append(train_data[i, 0]) #Will contain the 61th value (60)
+        #Convert the x_train and y_train to numpy arrays
+        x_train, y_train = np.array(x_train), np.array(y_train)
+        #Reshape the data
+        x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+        #Build the LSTM model
+        model = Sequential()
+        model.add(LSTM(50, return_sequences=True, input_shape=(x_train.shape[1], 1)))
+        model.add(LSTM(50, return_sequences=False))
+        model.add(Dense(30))
+        model.add(Dense(1))
+
+        model.add(Dense(units=1,activation='linear'))
+
+        #Compile the model
+        model.compile(optimizer='rmsprop', loss='mean_squared_error',metrics=['mean_absolute_error'])
+       
+
+        #Train the model
+        model.fit(x_train, y_train, batch_size=3, epochs=5)
+        test_data = scaled_data[training_data_len - 60:]
+        x_test = []
+        y_test = dataset[training_data_len:, :]
+        for i in range(60, len(test_data)):
+            x_test.append(test_data[i-60:i, 0])
+
+        #Convert the data to a numpy array
+        x_test = np.array(x_test)
+
+        #Reshape the data
+        x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+
+        #Get the model's predicted price values for the x_test data set
+        predictions = model.predict(x_test)
+        predictions = scaler.inverse_transform(predictions)
+        
+        #Evaluate model (get the root mean quared error (RMSE))
+        rmse = np.sqrt( np.mean( predictions - y_test )**2 )
+
+        #Plot the data
+        train = data[:training_data_len]
+        valid = data[training_data_len:]
+        valid['Predictions'] = predictions
+
+        #Create the testing data set
+        #Create a new array containing scaled values from index 1738 to 2247
+        test_data = scaled_data[training_data_len - 60:]
+        X_FUTURE = tempo
+        predictions = np.array([])
+        last = x_test[-1]
+        
+    from datetime import timedelta
+    for i in range(X_FUTURE):
+        curr_prediction = model.predict(np.array([last]))
+        last = np.concatenate([last[1:], curr_prediction])
+        predictions = np.concatenate([predictions, curr_prediction[0]])
+    predictions = scaler.inverse_transform([predictions])[0]
+    dicts = []
+    curr_date = data.index[-1]
+    for i in range(X_FUTURE):
+        curr_date = curr_date + timedelta(days=1)
+        dicts.append({'Predictions':predictions[i], "Data": curr_date})
+
+    new_data = pd.DataFrame(dicts).set_index("Data")
+    train = data
+    previsao4 = new_data.copy()
+    previsao4.rename(columns={0:'Valor da ação'}, inplace=True)
+    previsao4['Dat'] = previsao4.index
     def corte(x):
         y = str(x).split('T')[0]
         yy = y.split(" ")
         return yy[0]
-    previsao['Data'] = previsao['Dat'].apply(lambda x: corte(x))
-    previsao2 = previsao[['Data','Valor da ação']]
-    previsao2.set_index('Data',inplace=True)
-    st.header("Resultado do modelo preditivo por ARIMA")
-    st.dataframe(previsao2.tail(int(7*tempo)))
-    figura3 = px.line(title="")
-    st.header("Previsão de fechamento da "+acao+" nos próximos " + str(int(7*tempo)) + " dias - Modelo ARIMA")
-    figura3.add_scatter(x=previsao2.index,y=previsao2['Valor da ação'],name=acao)
-    figura3.update_layout(autosize=True,
-                      width=800, height=450,
-                      margin=dict(l=40, r=40, b=40, t=40))    
-    st.plotly_chart(figura3,use_container_width=False)
+    previsao4['Data'] = previsao4['Dat'].apply(lambda x: corte(x))
+    previsao5 = previsao4[['Data','Predictions']]
+    previsao5.set_index('Data',inplace=True)
+    st.write(previsao5)
+    contador += 1
+    #Visualize the data
+    
+    plt.figure(figsize=(16,8))
+    plt.title('Modelo de Redes Neurais',fontsize=26)
+    plt.xlabel('Data', fontsize=22)
+    plt.xticks(fontsize=16)
+    plt.plot(train['Adj Close'])
+    plt.plot(new_data['Predictions'])
+    plt.legend(['Dado real', 'Previsão'], loc='lower right')
+    st.pyplot()
+
 
 def Monte_Carlo(df):
     dff1 = df['Adj Close']
@@ -270,7 +402,7 @@ def Monte_Carlo(df):
     vari = LOG_RET.var() #variância
     drift = u - vari/2 #distribuição normal
     stdi = LOG_RET.std() #desvio padrão
-    t_inter = int(7*tempo)+1 #dias previstos após dia mais recente 
+    t_inter = int(tempo)+1 #dias previstos após dia mais recente 
     iteration = 10 #número de cenários
     d_r = np.exp(drift - stdi*norm.ppf(np.random.rand(t_inter,iteration))) #Modelo Browniano
     #st.write(d_r)
@@ -286,7 +418,7 @@ def Monte_Carlo(df):
         std_min.append(np.mean(price_list[t]) - 2*np.std(price_list[t]))
         std_max.append(np.mean(price_list[t]) + 2*np.std(price_list[t]))
         
-    temp = pd.date_range(dff1.tail(1).index[0], periods=int(7*tempo))
+    temp = pd.date_range(dff1.tail(1).index[0], periods=int(tempo))
     previsao3 = pd.DataFrame(np.array([k,std_min,std_max]).T,index=temp)
     previsao3.rename(columns={0:'Valor médio da ação',1:'Valor mínimo da ação',2:'Valor máximo da ação'}, inplace=True)
     previsao3['Dat'] = previsao3.index
@@ -298,23 +430,23 @@ def Monte_Carlo(df):
     previsao4 = previsao3[['Data','Valor médio da ação','Valor mínimo da ação','Valor máximo da ação']]
     previsao4.set_index('Data',inplace=True)
     st.header("Resultado do modelo preditivo por Monte Carlo")
-    st.dataframe(previsao4.tail(int(7*tempo)))
-    figura4 = px.line(title="")
-    st.header("Previsão de fechamento da "+acao+" nos próximos " + str(int(7*tempo)) + " dias - Modelo de Monte Carlo")
+    st.dataframe(previsao4.tail(int(tempo)))
+    st.header("Previsão de fechamento da "+acao+" nos próximos " + str(int(tempo)) + " dias - Modelo de Monte Carlo")
 
     zp = ['Valor médio da ação','Valor mínimo da ação','Valor máximo da ação']
-
-    for i in zp:
-        figura4.add_scatter(x=previsao4.index,y=previsao4[i],name=i)
-        
-    figura4.update_layout(autosize=True,
-                      width=800, height=450,
-                      margin=dict(l=40, r=40, b=40, t=40))    
-    st.plotly_chart(figura4,use_container_width=False)
-
+    plt.figure(figsize=(16,8))
+    plt.title('Modelo de Monte Carlo',fontsize=26)
+    plt.xlabel('Data', fontsize=22)
+    plt.xticks(fontsize=12)
+    plt.plot(previsao4[zp[0]])
+    plt.plot(previsao4[zp[1]])
+    plt.plot(previsao4[zp[2]])
+    plt.legend([zp[0],zp[1],zp[2]], loc='upper left')
+    st.pyplot()
 
 if submit:
-    if modelo == 'ARIMA':
-        arima(df)
     if modelo == "Monte Carlo":
         Monte_Carlo(df)
+    if modelo == 'Redes Neurais':
+        redes_neurais(df,contador)
+
