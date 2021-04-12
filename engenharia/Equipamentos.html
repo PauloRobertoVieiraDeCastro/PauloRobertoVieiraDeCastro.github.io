@@ -32,13 +32,6 @@
                     </div>
                 </div>
 
-                <div class="container nav-item dropdown navegada col-lg-2">
-                    <div class="col-lg-12">
-                        <a class="nav-link estilo" href="#bal1" style="font-weight: bolder;">
-                            Hidrociclone
-                        </a>
-                    </div>
-                </div>
 
 
                 <div class="container nav-item dropdown navegada col-lg2">
@@ -51,13 +44,21 @@
 
                 <div class="container nav-item dropdown navegada col-lg-2">
                     <div class="col-lg-12">
-                        <a class="nav-link estilo" href="#bal1" style="font-weight: bolder;">
-                            Bomba
+                        <a class="nav-link estilo" href="#hidrociclone" style="font-weight: bolder;">
+                            Hidrociclone
                         </a>
                     </div>
                 </div>
 
-                <div class="container nav-item dropdown navegada col-lg-2">
+                <div class="container nav-item dropdown navegada col-lg-3">
+                    <div class="col-lg-12">
+                        <a class="nav-link estilo" href="#trocadorcalor" style="font-weight: bolder;">
+                            Trocador de calor
+                        </a>
+                    </div>
+                </div>
+
+                <div class="container nav-item dropdown navegada col-lg-1">
                     <div class="col-lg-12">
                         <a class="nav-link estilo" href="#bal1" style="font-weight: bolder;">
                             Filtro
@@ -132,9 +133,10 @@
                             <option value="0" name="NR">Por pontos</option>
                         </select>  
                     </div>
-
-
                 </div>
+
+
+
 
 
                 <div class="form-row justify-content-center" style="margin-top: 20px" id="bot_cic">
@@ -235,8 +237,6 @@
                         <img class="img-responsive center" style="margin-top: 30px;"src="cic.png" alt="Responsive image">
                     </div>
                 </div>
-                
-
             </div>
         </div>  
 
@@ -346,12 +346,189 @@
             </div> 
         </div>  
 
+
+        <div class="container">
+            <div class="jumbotron" style="margin-top: 120px;padding-top: 30px;margin-left: 20px; margin-right: 20px">
+                <div id="hidrociclone">
+                    <h3>Dimensionamento de hidrociclones</h3>
+                </div>
+
+                <div class="form-row" style="margin-top: 20px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a densidade da partícula</label>
+                        <input type="number" placeholder="em kg/m³" class="form-control form-control-lg rho_CH" name="rho_CH">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a vazão</label>
+                        <input type="number" placeholder="em m³/s" class="form-control form-control-lg Q_CH" name="Q_CH">
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 10px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a densidade do fluido</label>
+                        <input type="number" placeholder="em kg/m³" class="form-control form-control-lg RHOF_CH" name="RHOF_CH">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a eficiência mínima</label>
+                        <input type="number" placeholder="em %, de 0 até 100" class="form-control form-control-lg EFI_CH" name="EFI_CH">
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 10px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a concentração volumétrica de sólido</label>
+                        <input type="number" placeholder="em %" class="form-control form-control-lg C_CH" name="C_CH">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a razão de líquido</label>
+                        <input type="number" placeholder="De 0 até 1" class="form-control form-control-lg RL" name="RL">
+                    </div>
+                </div>
+
+
+                <div class="form-row" style="margin-top: 10px">
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a viscosidade do fluido</label>
+                        <input type="number" name="gluteo" placeholder="em Pa.s" class="form-control form-control-lg gluteo viscoh" id="viscoh">
+                    </div>   
+
+                    <div class="form-group col-lg-6 col-md-12">
+                        <label class="col-form-label col-form-label-lg">Insira a perda de carga</label>
+                        <input type="number" name="gluteo" placeholder="em Pa" class="form-control form-control-lg gluteo cargah" id="cargah">
+                    </div>   
+                    
+                </div>
+
+
+                <div class="form-row justify-content-center" style="margin-top: 20px" id="bot_cic">
+                    <div class="justify-content-center abc" id="form">
+                        <input style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg" value="Adicionar" onclick="insRowh()" id="botao_addh">
+                    </div>
+                
+                    <div class="justify-content-center abc" id="form2">
+                        <input style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg" value="Remover" onclick="remRowh()" id="botao_remh">
+                    </div>
+                </div>
+
+
+                <div class="form-row justify-content-center" style="margin-top: 2%">
+                    <div class="justify-content-center">
+                            <button style="font-size: 25px; width: 250px; background-color: #6666CC;" type="button" class="btn btn-primary btn-lg" onclick="calcularH()">Calcular</button>
+                    </div>
+                </div>
+
+
+                <div id="Gremioh">
+                    <div class="form-row justify-content-center" id="teste_hidrociclone" style="margin-top: 5%;"></div>
+                </div>
+
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center">
+                        <div class="row justify-content-center" style="margin-top: 10px; font-size: 20px; font-weight: bold">
+                            Medida do(s) hidrociclone(s) e características operacionais
+                        </div>
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>D<sub>c</sub> (cm)</div>
+                                <div class="dd_hc"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>L<sub>1</sub> (cm)</div>
+                                <div class="bb_hc"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>u<sub>c</sub> (cm)</div>
+                                <div class="u_hc"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>L<sub>c</sub> (cm)</div>
+                                <div class="lc_hc"></div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>L<sub>2</sub> (cm)</div>
+                                <div class="L1_hc"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>D<sub>o</sub> (cm)</div>
+                                <div class="e_hc"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>D<sub>i</sub> (cm)</div>
+                                <div class="di_hu"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>Modelo</div>
+                                <div class="ss_hc"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>R<sup>2</sup></div>
+                                <div class="r2_hc"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-3 justify-content-center tam_letra">
+                                <div>C<sub>underflow</sub> (%)</div>
+                                <div class="c_hu"></div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px">
+                            <div class="form-group col-lg-3 col-md-4 justify-content-center tam_letra">
+                                <div>Vazão (m³/h)</div>
+                                <div class="VAZAOHC"></div>
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-4 justify-content-center tam_letra">
+                                <div>Potência (W)</div>
+                                <div class="wattp"></div>
+                            </div>
+
+                            <div class="form-group col-lg-6 col-md-4 justify-content-center tam_letra">
+                                <div>N° de unidades</div>
+                                <div class="n_hcic"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 justify-content-center">
+                        <div class="row justify-content-center" style="margin-top: 10px; font-size: 20px; font-weight: bold">
+                            Esquema de um hidrociclone
+                        </div>
+                        <img class="img-responsive center" style="margin-top: 30px;"src="hidrociclone.png" alt="Responsive image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         
+            
+        </div>
+
         
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>     
         <script type="text/javascript" src="ciclone.js"></script>  
         <script type="text/javascript" src="sedimentador.js"></script>  
+        <script type="text/javascript" src="hidrociclone.js"></script>  
 
     </body>
 </html>
