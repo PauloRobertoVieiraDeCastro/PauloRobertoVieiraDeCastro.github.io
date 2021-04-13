@@ -1,0 +1,157 @@
+body{
+	background-color: #F8F8F8;
+	margin: 0px;
+}
+
+nav{
+	background-color: #6666CC;
+	color: white;
+	min-height: 50px;
+	z-index: 100;
+}
+
+@media(min-width: 1020px){
+	.navegada{
+		color: white;
+		margin-left: 40px;
+	}
+}
+
+@media(max-width: 1020px){
+	.navegada{
+		color: white;
+		margin-left: -40px;
+	}
+}
+
+tr, thead{
+	text-align: center;
+}
+
+
+.fgo{
+	padding-right: 20px;
+}
+
+.tam{
+	min-width: 40px;
+	max-width: 170px;
+}
+
+input{
+	margin-top: 10px;
+	
+}
+
+@media(min-width: 1020px){
+	.aa{
+	width: 150px;
+	margin-left: 25px;
+	background-color: yellow;
+	}	
+}
+
+@media(max-width: 1020px){
+	.aa{
+	width: 120px;
+	margin-left: 25px;
+	background-color: red;
+	}	
+}
+
+
+.estilo{
+	color: white;
+	font-size: 18px;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+  border-style: solid 2px;
+} 
+
+.mt-n1 {
+  margin-top: -5%;
+}
+
+a:hover {
+  font-weight: bolder;
+  color: white;
+  font-size: 22px
+}
+
+
+@media(max-width: 1120px){
+	.tam{
+		min-width: 60px;
+		max-width: 190px;
+	}
+	.abc{
+		 margin-left: 3%;
+	}
+	
+}
+
+@media(min-width: 1120px){
+	.tam{
+		min-width: 290px;
+		max-width: 360px;
+	}
+
+	.abc{
+		 margin-left: 3%;
+	}
+	
+}
+
+@media(max-width: 760px){
+	.tam{
+		min-width: 290px;
+		max-width: 360px;
+	}
+
+	.abc{
+		 margin-left: 0%;
+	}
+	
+}
+
+
+.product .img-responsive {
+    margin: 0 auto;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+img {
+    background-color : blue;
+}
+
+.tam_letra{
+	font-size: 18px;
+}
+
+@media(max-width: 760px){
+	.acd{
+		margin-left: -15%;
+	}
+}
+
+@media(max-width: 1020px){
+	.tama{
+		min-width: 80px;
+		max-width: 100px;
+	}
+}
+
+@media(min-width: 1020px){
+	.tama{
+		min-width: 140px;
+		max-width: 180px;
+	}
+}
