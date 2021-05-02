@@ -1,13 +1,14 @@
 body{
-	background-color: #F8F8F8;
-	margin: 0px;
+  background-color: #F8F8F8;
+  margin: 0px;
+  font-size: 1.25em;
 }
 
 nav{
-	background-color: #3366ff;
-	color: white;
-	min-height: 50px;
-	z-index: 100;
+  background-color: #3366ff;
+  color: white;
+  min-height: 50px;
+  z-index: 100;
 }
 
 @media(min-width: 1020px){
@@ -24,7 +25,7 @@ nav{
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 60px; 
+    font-size: 2.0em; /*60px*/
     color: white; 
     min-width: 300px; 
     font-weight: bold;
@@ -35,7 +36,7 @@ nav{
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 40px;
+    font-size: 2.0em; /*40px*/
     color: white;
     min-width: 800px;
   }
@@ -77,12 +78,12 @@ nav{
 }
 
 .fgo{
-	padding-right: 20px;
+  padding-right: 20px;
 }
 
 .estilo{
-	color: white;
-	font-size: 18px;
+  color: white;
+  font-size: 18px;
 }
 
 
@@ -121,8 +122,8 @@ nav{
 
 
 .classe_a{
-	margin-left: 0%;
-	margin-right: 0%;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 
 .float{
@@ -147,10 +148,10 @@ nav{
 a:hover {
   font-weight: bolder;
   color: white;
-  font-size: 18px
+  font-size: 1.0em/*18px*/
 }
 
 .botao_toggler{
-  border-style: solid 8px; 
+  border-style: solid 10px; 
   color: white;
 }
