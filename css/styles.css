@@ -1,3 +1,147 @@
+/*resetando as tags, antes de iniciar*/
+
+body{
+  background-color: #F8F8F8;
+  margin: 0px;
+  font-size: 1.0em;
+  overflow-x: hidden;
+}
+
+nav{
+  background-color: #3366ff;
+  color: white;
+  min-height: 50px;
+  z-index: 100;
+  font-size: 1.25em;
+}
+
+img{
+  display: block;
+  width: 100%;
+}
+
+.introducao1{
+  width: 100%;
+  background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.4), 
+          rgba(0, 0, 0, 0.4)
+        ),
+        /* bottom, image */
+        url(impri.jpg);
+  /*background: url(../img/limp_pred.jpg); /*o 2 pontos indica que voltou um diretório*/
+  background-size: cover;
+  margin-top: 50px;
+  height: 500px;
+  padding-top: 80px; /*para centralizar na altura a frase*/
+  text-align: center;
+}
+
+.line{
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.estilo{
+  color: white;
+}
+
+@media(min-width: 1020px){
+  .navegada{
+    color: white;
+    margin-left: 40px;
+    
+  }
+}
+
+@media(min-width: 1020px){
+  .centered {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.0em; /*60px*/
+    color: white; 
+    min-width: 300px; 
+    font-weight: bold;
+  }
+
+  .centered2 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8em; /*40px*/
+    color: white;
+  }
+}
+
+@media(max-width: 1020px){
+  .centered {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px; 
+    color: white; 
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .centered2 {
+    position: absolute;
+    top: 30%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    margin-top: 20px;
+    color: white;
+  }
+}
+
+@media(max-width: 1020px){
+  .navegada{
+    color: white;
+    margin-left: -40px;
+  }
+}
+
+.imagem{
+  background-image: url("impri.jpg");
+  background-size: cover;
+}
+
+.fgo{
+  padding-right: 20px;
+}
+
+
+
+.typing-animation {
+        animation: blinkCursor 500ms steps(40) infinite normal,
+          typing 4s steps(40) 1s normal both;
+      }
+
+      @keyframes typing {
+        from {
+          width: 10em;
+        }
+        to {
+          width: 16em;
+        }
+      }
+
+      @keyframes blinkCursor {
+        from {
+          border-right-color: rgba(255, 255, 255, 0.75);
+        }
+        to {
+          border-right-color: transparent;
+        }
+      }
+
 .navbar-toggler {
   border-color: #ffffff;
   border-style: solid 2px;
@@ -7,11 +151,17 @@
   margin-top: -5%;
 }
 
-
-
 .classe_a{
-	margin-left: 0%;
-	margin-right: 0%;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 20px; 
+  margin-bottom: 40px;
+}
+
+.classe_b{
+  margin-left: 15px;  
+   margin-top: -20px;
+   margin-bottom: 10px;
 }
 
 .float{
@@ -36,5 +186,41 @@
 a:hover {
   font-weight: bolder;
   color: white;
-  font-size: 22px
+  font-size: 1.0em/*18px*/
+}
+
+.botao_toggler{
+  border-style: solid 10px; 
+  color: white;
+}
+
+.fundo{
+  margin-left: 15px;
+}
+
+.dist{
+  margin-top: 30px;
+}
+
+footer .row{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.skills{
+  margin-left: 15px;
+}
+
+.skills h4{
+  font-size: 18px;
+}
+
+.skill-lista{
+  margin: 10px 0;
+}
+
+.grafico_total{
+  background-color: #C0C0C0; 
+  max-width: 70%; 
+  height: 20px;
 }
