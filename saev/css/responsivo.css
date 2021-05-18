@@ -1,0 +1,47 @@
+@media only screen and (min-width: 768px) and (max-width: 979px){/*os 20px a mais evitam gerar scroolbar lateral - tablets*/
+	
+}
+
+@media only screen and (max-width: 767px){/*os 20px a mais evitam gerar scroolbar lateral*/
+	.header{
+		position: relative;
+		padding-bottom: 0px;
+	}
+
+	.header img{
+		margin: 0px auto 20px auto;
+	}
+
+	.header_menu{
+		text-align: center;
+	}
+
+	.header_menu ul li{
+		margin: 0px;
+	}
+
+	.header_menu ul li a{
+		display: block;
+		width: 140px;
+		float: left;
+		border: 4px solid #000;
+	}
+
+	/*intro mobile*/
+	.introducao{
+		margin-top: 0px;
+		padding-top: 20px;
+		background: url(../img/bg-mobile.jpg) no-repeat center; /*o 2 pontos indica que voltou um diretório*/
+		background-size: cover;
+	}
+
+	.quote_externo p:before, .quote_externo p:after{
+		content: "";/*preciso para criar*/
+		display: block; /*mudo o default dele de inline para block*/
+		width: 60px;
+		height: 2px;
+		background-color: #fff;
+		margin: 8px auto 8px auto;
+	}
+
+}
