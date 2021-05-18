@@ -1,4 +1,4 @@
-const msg = "Químico/Desenvolvedor";
+const msg = "Analista/Desenvolvedor";
 let titulo = document.querySelector(".vero");
 
 var speed = 150;
