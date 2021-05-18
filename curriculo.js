@@ -1,7 +1,7 @@
 const msg = "Químico/Desenvolvedor";
 let titulo = document.querySelector(".vero");
 
-var speed = 100;
+var speed = 150;
 var cont = 0;
 function typeWriter(){
 	if(cont<msg.length){
