@@ -1,0 +1,19 @@
+body{
+	background-color: #f4f4f4;
+	margin: 0;
+}
+
+header{
+	background-color: #ff6600;
+	text-align: center;
+}
+
+header h1{
+	padding: 20px 0;
+}
+
+.container{
+	max-width: 960px;
+	margin-top: 20px;
+}
+
