@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Calculadora Shopee</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="css/shopee.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <script>
+
+            function receber_shopee(){
+                var seg_ent = document.createElement('div');
+                document.querySelector('#entries').appendChild(seg_ent);
+                seg_ent.className ="form-group col-lg-6 col-md-12 col-sm-12";
+                seg_ent.id = 'entrada';
+
+                var tarifa = parseFloat(document.getElementById("tarifa").value);
+                var receber = parseFloat(document.getElementById("receber").value);
+                var a = (receber/(1-tarifa/100.0));
+
+                document.getElementById("entrada").remove();
+                var seg_ent = document.createElement('div');
+                document.querySelector('#entries').appendChild(seg_ent);
+                seg_ent.className ="form-group col-lg-6 col-md-12 col-sm-12";
+                seg_ent.id = 'entrada';
+
+                var a2 =  document.createElement('label');
+                document.querySelector('#entrada').appendChild(a2);
+                a2.className="col-form-label col-form-label-lg";
+                a2.innerHTML ="Deverei anunciar por R$ " + a.toFixed(2);
+
+                //document.querySelector("#receber_resultado").innerHTML = 
+            }
+
+            function anuncio_shopee(){
+                var seg_ent = document.createElement('div');
+                document.querySelector('#entries').appendChild(seg_ent);
+                seg_ent.className ="form-group col-lg-6 col-md-12 col-sm-12";
+                seg_ent.id = 'entrada';
+
+                var tarifa = parseFloat(document.getElementById("tarifa").value);
+                var anuncio = parseFloat(document.getElementById("anuncio").value);
+                var r = anuncio*(1-tarifa/100.0);   
+
+                document.getElementById("entrada").remove();
+                var seg_ent = document.createElement('div');
+                document.querySelector('#entries').appendChild(seg_ent);
+                seg_ent.className ="form-group col-lg-6 col-md-12 col-sm-12";
+                seg_ent.id = 'entrada';
+
+                var a2 =  document.createElement('label');
+                document.querySelector('#entrada').appendChild(a2);
+                a2.className="col-form-label col-form-label-lg";
+                a2.innerHTML ="Deverei receber R$ " + r.toFixed(2);
+                //document.querySelector("#receber_resultado2").innerHTML = "Deverei receber R$ " + r.toFixed(2);
+            }
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <h1 class="menu-logo">Calculadora Shopee</h1>
+        </header>
+        
+        <section class="container">
+            <form>
+
+                <div class="form-row">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <label for="tarifa" class="col-form-label col-form-label-lg">Tarifa da Shopee</label>
+                        <input type="number" name="tarifa" placeholder="em %" id="tarifa" class="form-control form-control-lg">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                        <label for="receber" class="col-form-label col-form-label-lg">Quero receber líquido</label>
+                        <input type="number" name="receber" placeholder="em R$" id="receber" class="form-control form-control-lg" onchange="receber_shopee()">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                        <label for="anuncio" class="col-form-label col-form-label-lg">Anunciar por</label>
+                        <input type="number" name="anuncio" placeholder="em R$" id="anuncio" class="form-control form-control-lg" onchange="anuncio_shopee()">
+                    </div>
+                </div>
+
+                <div class="form-row" id="entries">
+                    
+                </div>
+               
+            </form>
+            
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+       
+    </body>
+</html>
