@@ -1,0 +1,167 @@
+body{
+  margin: 0;
+  color: #000;
+}
+
+header h1{
+  font-size: 30px;
+}
+
+/*------------------------------------------BOTAO LATERAL---------------------------------------------------------*/
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 16px;}
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+
+header{
+  width: 100%;
+  background-color:#000;
+  color: #fff;
+  padding: 5px 0;
+  /*position: fixed;
+  top: 0;
+  z-index: 10;*/
+}
+
+.menu{
+  display: flex; /*o menu é um container, q torna as divs filhas como flex-items.*/
+  flex-wrap: wrap;
+  margin: 0 30px;
+  padding: 5px 0;
+  justify-content: flex-start; /*com isso, cada um fica em uma ponta*/
+  align-items: center;
+  font-size: 0.875rem;
+  letter-spacing: .1em;
+}
+
+.menu h2{
+  font-size: 30px;
+}
+
+/*-----------------------------CORPO PRINCIPAL----------------------------------------------------------------------------------*/
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0px;
+  position: relative;
+}
+
+.tamanho{
+  font-size: 24px;
+  line-height: 36px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.botao{
+  font-size: 22px; 
+  width: 200px; 
+  background-color: black;
+  text-transform: uppercase;
+  color: white;
+}
+
+input{
+  border: 2px solid #000;
+  color: #000;
+}
+
+.classe_a{
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 20px; 
+  margin-bottom: 40px;
+}
+
+.intg{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+.grafico{
+  margin-top: 10px;
+}
+
+hr{
+  max-width: 90%; 
+  border-color: black;
+}
+
+.container_desc{
+  max-width: 920px;
+  padding: 20px 20px;
+}
+
+.container_raiz{
+  max-width: 920px;
+  background-color: #f4f4f4;
+  padding: 20px 20px;
+}
+
+.tabelao{
+  text-align: center;
+}
+
+thead{
+  font-size: 22px;
+  line-height: 25px;
+  letter-spacing: 0.1em;
+}
+
