@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Cálculo de Equações Diferenciais Ordinárias - ProgramaBR</title>
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <link href='https://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/calculo.css">
+        <link rel="shortcut icon" href="mat.ico"/>
+        <script src="https://unpkg.com/mathjs/lib/browser/math.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+        <script type=" https://www.numericjs.com/lib/numeric-1.2.6.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <script>document.documentElement.classList.add("js");</script>
+        <!--Header wordpress-->
+    </head>
+
+    <body>
+        <header>
+            <div class="menu">
+                <div class="col-lg-3">
+                    <div id="mySidebar" class="sidebar">
+                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                      <a href="calc_raizes.html">Cálculo de raízes</a>
+                      <a href="calc_integrais.html">Cálculo de integrais</a>
+                      <a href="calc_edo.html">Equações diferenciais</a>
+                    </div>
+
+                    <nav id="main">
+                      <button class="openbtn" onclick="openNav()">☰ Opções</button>  
+                    </nav>
+                </div>
+                <h1 class="col-lg-6">ProgramaBR - Equações Diferenciais</h1>
+            </div>
+        </header>
+
+        <section class="row line container col-lg-12 col-md-12 col-sm-12 container_desc">
+            <p>O objetivo dessa calculadora é gerar o perfil de solução de uma equação diferencial ordinária de primeira ordem, tomando como entrada o método numérico de resolução, dentre os disponíveis: Euler Explícito, Runge-Kutta de 4ª ordem, ambos explícitos Euler Implícito, Euler Aprimorado, Runge-Kutta Implícito e Adam-Moulton, todos esses implícitos. Com isso, serão observadas diferenças entre os tempos computacionais e da estabilidade do método.</p>
+            <p>Os métodos implícitos são incondicionalmente convergentes, ou seja, são estáveis. Porém, usualmente, requerem esforços computacionais maiores, uma vez, que em uma de suas etapas envolva o cálculo de raízes em cada iteração, requerendo o uso de algum método numérico para tanto.</p>
+            <p>Os métodos explícitos são condicionalmente convergentes. Por outro lado, apresentam esforços computacionais menores. A estabilidade é condicionada, entre outros, pela natureza da equação diferencial. Para cada fenômeno, deve-se avaliar o perfil de cada equação diferencial.</p>
+        </section>
+
+        <section class="row line container col-lg-12 col-md-12 col-sm-12 intg">
+            <div class="col-md-12 col-sm-12 container_raiz">
+                <h3 class="subtitulo formula" id="integracao">Entre com os dados - Cálculo de equações diferenciais</h3>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="func_int" class="col-form-label col-form-label-lg">Insira a equação diferencial</label>
+                            <input type="text" name="func_edo" id="func_edo" placeholder="f(x,y)=x^2 + 5*y" required class="form-control form-control-lg">
+                        </div>
+
+                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label class="col-form-label col-form-label-lg">Selecione o método</label>
+                            <select class="form-control form-control-lg metodo_integ" required id="metodo_integ" name="metodo_integ">
+                                <option value="0" name="NR">Euler explícito</option>
+                                <option value="1" name="NR">Runge-Kutta de 4ª ordem</option>
+                                <option value="2" name="NR">Euler implícito</option>
+                                <option value="3" name="NR">Runge-Kutta Implícito</option>
+                                <option value="4" name="NR">Adams-Moulton</option>
+                                <option value="5" name="NR">Euler Aprimorado</option>
+                            </select>  
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                            <label for="x0" class="col-form-label col-form-label-lg">Insira o x ponto inicial</label>
+                            <input type="number" name="x0" id="x0" placeholder="Número real" required class="form-control form-control-lg">
+                        </div> 
+
+                        <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                            <label for="y0" class="col-form-label col-form-label-lg">Insira o ponto y inicial</label>
+                            <input type="number" name="y0" id="y0" placeholder="Número real" required class="form-control form-control-lg">
+                        </div> 
+                    </div>  
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="step" class="col-form-label col-form-label-lg">Insira o passo</label>
+                            <input type="number" name=step id="step" placeholder="Número real" required class="form-control form-control-lg">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="inter" class="col-form-label col-form-label-lg">Insira o número de intervalos</label>
+                            <input type="number" name="inter" id="inter" placeholder="Número inteiro" required class="form-control form-control-lg">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 justify-content-center tamanho" id="resultado_integral"></div>
+
+                    <div class="form-row justify-content-center col-lg-12 col-md-12 col-sm-12" style="margin-top: 5%">
+                        <div class="justify-content-center">
+                            <button type="button" class="btn btn-primary btn-lg botao" onclick="calcular_edo()">Calcular</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row">
+                    <canvas id="myChart" class="grafico"></canvas>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 tabelao">
+                    <table id="tabelaedo" class="table">
+                        <thead>
+                            <tr>
+                                <th>Passo</th>
+                                <th>x</th>
+                                <th>f(x)</th>
+                            </tr>
+                        </thead>
+                        
+                    </table>    
+                </div>        
+            </div>
+        </section>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="js/simple-slide.js"></script>
+        <script src="js/simple-anime.js"></script>
+        <script src="js/script3.js"></script>
+        <script src="js/edo.js"></script>
+    </body>
