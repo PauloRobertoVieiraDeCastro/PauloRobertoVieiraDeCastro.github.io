@@ -258,3 +258,7 @@ textarea{
 	letter-spacing: 0.08em;
 	font-family: cursive, "Lucida Console", monospace;
 }
+
+.section_color{
+	background-color: #f1f1f1;
+}
