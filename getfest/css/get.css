@@ -263,10 +263,10 @@ textarea{
 	background-color: #f1f1f1;
 }
 
-#panel,#panel2,#panel3,#panel4,#panel5,#panel6{
+#panel,#panel2,#panel3,#panel4,#panel5,#panel6,#panel7,#panel8,#panel9,#panel10,#panel11,#panel12,#panel13,#panel14,#panel15{
 	display: none;
 }
 
-p.tamanho-paragrafo{
-	font-size: 40px;
+#teste{
+	display: none;
 }
