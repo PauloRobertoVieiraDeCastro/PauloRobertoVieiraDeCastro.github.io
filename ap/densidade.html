@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Cálculo de densidade</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <link href='https://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/densidade.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+        <!--Header wordpress-->
+    </head>
+
+    <body>
+        <div class="super">
+            <div class="superinfo-bg"> <!--acima do cabeçalho-->
+                <div class="superinfo col text-left d-block">
+                    <h1>Conversão de densidades</h1>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-expand-md fixed-top py-3 box-shadow estilo_nav"> <!--expande apos 760 px-->
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color:white; font-size:28px;"></i></span>
+                </button>
+
+                <div id="navbarText" class="collapse navbar-collapse"><!--O id deve ser esse, pois mostrará todo o conteudo com o toggle button-->
+                    <ul class="navbar-nav ml-auto"> <!--gera margem esquerda, levando para direita-->
+                        <li class="nav-item">
+                            <a class="nav-link ml-md-2 itens_nav" href="balanco_simples.html">Balanço simples</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link ml-md-2 itens_nav" href="bolos.html">Balanço completo e curva PEV</a>
+                        </li>                    
+
+                         <li class="nav-item">
+                            <a class="nav-link ml-md-2 itens_nav" href="cupcake.html">Composição</a>
+                        </li>
+
+                    </ul>
+                </div> 
+            </nav>
+        </div>
+
+        <section class="container-fluid my-3 jumbotron" style="background: white; color: green">
+            
+            <h2 class="mx-3 text-center">Insira seus dados</h2>
+            
+                <div class="form-row mx-3" style="margin-top: 30px;">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                        <label class="col-form-label col-form-label-lg">Insira a densidade obtida</label>
+                        <input type="number" placeholder="em g/cm³" class="form-control form-control-lg rho" id="rho">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                        <label class="col-form-label col-form-label-lg">Insira a temperatura realizada do ensaio</label>
+                        <input type="number" placeholder="em Celsius" class="form-control form-control-lg temp" id="temp">
+                    </div>
+                </div>
+            
+
+                <div class="form-group row text-center justify-content-center my-3">
+                    <button class="btn btn-lg dens" onclick="calcular()" style="min-width: 200px;">Calcular</button>
+                </div>
+            
+
+            <div class="row text-center justify-content-center" style="margin-top: 40px">
+                <h2>Resultados obtidos</h2>
+            </div>
+
+
+            <div class="row text-center my-3">
+                <h4 class="form-group col-lg-12 col-md-12 col-sm-12" id="densidade_final">        
+                </h4>
+
+                <h4 class="form-group col-lg-12 col-md-12 col-sm-12" id="API_final">
+                </h4>    
+            </div>
+
+        </section>
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./js/densidade.js"></script>
+    </body>
+</html>
