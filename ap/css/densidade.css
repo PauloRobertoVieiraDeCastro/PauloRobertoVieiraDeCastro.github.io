@@ -123,19 +123,34 @@ li{
 	font-weight: bolder;
 }
 
-@media only screen and (min-width: 1088px) and (max-width: 1500px){
+@media only screen and (min-width: 1278px) and (max-width: 1500px){
   .tamanho_e{
     max-width: 210px;
     font-size: 14px;
+    color: green;
   }
   .espaco_entry{
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  .tamanho_f{
+    max-width: 210px;
+    font-size: 14px;
+    color: green;
+  }
+  .espaco_prod{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
-@media only screen and (min-width: 300px) and (max-width: 1087px){
+@media only screen and (min-width: 300px) and (max-width: 1277px){
   .espaco_entry{
+    margin-top: 5px;
+    margin-bottom: 50px;
+  }
+
+  .espaco_prod{
     margin-top: 5px;
     margin-bottom: 50px;
   }
