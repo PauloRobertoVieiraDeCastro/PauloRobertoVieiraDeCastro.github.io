@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>MatFinx - Índices econômicos</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <link href='https://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/calc.css">
+        <link rel="stylesheet" href="css/juros.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+        <link rel="shortcut icon" href="coin.ico"/>
+        <!--Header wordpress-->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="./js/calc.js"></script>
+    </head>
+
+    <body>
+        
+        <div id="loading" style="display: block; margin-top: 10%; text-align: center;" class="justify-content-center">
+            <img src="Coin3.gif">
+        </div>
+        
+        <div id="conteudo" style="display: none">
+            <header class="container">
+                <h1 class="menu-logo no">Índices econômicos</h1>
+            </header>
+
+            <main class="my-3 container">
+                <h5 class="my-3 justify-content-center text-center">Escolha dentre os índices disponíveis, com base nos dados obtidos de uma API do Banco Central.</h5>
+
+                
+                <div class="form-row margem-tta">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12 px-1">
+                        <label class="col-form-label col-form-label-lg">Insira a data inicial</label>
+                        <input type="" placeholder="dd/mm/aaaa" class="form-control form-control-lg d0 a" style="outline: 0;border-width: 0 0 2px;" id="d0">  
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12 px-1">
+                        <label class="col-form-label col-form-label-lg">Insira a data final</label>
+                        <input type="" placeholder="dd/mm/aaaa" class="form-control form-control-lg df a" style="outline: 0;border-width: 0 0 2px;" id="df">  
+                    </div>                   
+                </div>
+
+                <div class="form-row margem-tt">
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                        <label class="col-form-label col-form-label-lg">Selecione o indicador</label>
+                        <select name="modelo" class="form-control form-control-lg modelo" id="indice" required>
+                            <option value="0" name="NR">IPCA</option>
+                            <option value="1" name="NR">Cotação do Dólar</option>
+                            <option value="2" name="NR">SELIC</option>
+                            <option value="3" name="NR">Dívida Pública</option>
+                            <option value="4" name="NR">Índice de confiança do consumidor</option>
+                        </select> 
+                    </div>
+                </div>
+
+                                
+                <div class="margem-t justify-content-center text-center" style="margin-bottom: 30px;">
+                    <button class="btn btn-primary btn-lg botao" onclick="loadpk()">Iniciar</button>
+                </div>
+
+                 <div class="form-row margem-tt text-center justify-content-center zap">
+                    <div class="grafico form-group col-lg-12 col-md-12 col-sm-12 text-center justify-content-center"></div>
+                </div>
+
+            </main>
+        </div>
+
+
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="js/bootstrap/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <!-- All Plugins js -->
+        <script src="js/plugins/plugins.js"></script>
+        <!-- Active js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./js/bc.js"></script>
+    </body>
+</html>

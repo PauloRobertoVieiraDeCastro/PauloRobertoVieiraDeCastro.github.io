@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>MatFinx - Juros compostos</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <link href='https://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/calc.css">
+        <link rel="stylesheet" href="css/juros.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+        <link rel="shortcut icon" href="coin.ico"/>
+
+
+        <!--Header wordpress-->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="./js/calc.js"></script>
+    </head>
+
+    <body>
+        
+        <div id="loading" style="display: block; margin-top: 10%; text-align: center;" class="justify-content-center">
+            <img src="Coin3.gif">
+        </div>
+        
+        <div id="conteudo" style="display: none">
+            <header class="container">
+                <h1 class="menu-logo no">Cálculo com juros compostos</h1>
+            </header>
+
+            <main class="my-3 container">
+                <h5 class="my-3 justify-content-center text-center">O cálculo de montante após um investimento inicial em regime de juros compostos possui comportamento exponencial. A fórmula para cálculo de montante pode ser expressa abaixo e sua simples manipulação permite encontrar outros termos, se necessário.</h5>
+
+                <h3 class="my-3 justify-content-center text-center">M = C.(1 + j)<sup>t</sup></h3>   
+
+                <h5 class="my-3 justify-content-center text-center">Para usar essa aplicação, basta preencher três das quatro entradas, que será calculado o termo que falta. O preenchimento dos quatro termos calculará o montante, desprezando o que o usuário calcular. </h5>                             
+                <div class="form-row margem-tta">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12 px-1">
+                        <label class="col-form-label col-form-label-lg">Insira a taxa de juros</label>
+                        <input type="" placeholder="Em % (a.a, a.m, a.d...)" class="form-control form-control-lg taxa a" style="outline: 0;border-width: 0 0 2px;" id="taxa">  
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                        <label class="col-form-label col-form-label-lg">Insira o capital inicial</label>
+                        <input type="" placeholder="Em unidade monetária (R$, $, £, Eur..)" class="form-control form-control-lg capital a" style="outline: 0;border-width: 0 0 2px;" id="capital">
+                    </div>
+                </div>
+
+                <div class="form-row margem-tt">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12 px-1">
+                        <label class="col-form-label col-form-label-lg">Insira o tempo de investimento</label>
+                        <input type="number" placeholder="Na mesma unidade da taxa de juros (ano, mês...)" class="form-control form-control-lg a tempo" style="outline: 0;border-width: 0 0 2px;" id="tempo">  
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                        <label class="col-form-label col-form-label-lg">Insira o montante</label>
+                        <input type="" placeholder="Em unidade monetária (R$, $, £, Eur..)" class="form-control form-control-lg a mont" style="outline: 0;border-width: 0 0 2px;" id="mont">
+                    </div>
+                </div>
+                
+                <div class="margem-t justify-content-center text-center">
+                    <button class="btn btn-primary btn-lg botao" onclick="juros()">Calcular</button>
+                </div>
+
+                <div class="form-row text-center margem-tt">
+                    <div class="ack form-group col-lg-12 col-md-12 col-sm-12"></div>
+                </div>
+
+                <div class="form-row margem-tt text-center justify-content-center">
+                    <div class="grafico form-group col-lg-12 col-md-12 col-sm-12 text-center justify-content-center"></div>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="js/bootstrap/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <!-- All Plugins js -->
+        <script src="js/plugins/plugins.js"></script>
+        <!-- Active js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./js/calculo_fim.js"></script>
+    </body>
+</html>
