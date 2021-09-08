@@ -1,0 +1,33 @@
+.a input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: black;
+  opacity: 1;
+}
+.a input:focus {
+  border-color: black
+}
+
+.a::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+  opacity: 1; /* Firefox */
+}
+
+.ack{
+  font-size: 1.5rem;
+}
+
+.ack2{
+  font-size: 1.5rem;
+}
+
+table.table-bordered{
+    border:1px solid black;
+    margin-top:20px;
+  }
+table.table-bordered > thead > tr > th{
+    border:1px solid black;
+}
+table.table-bordered > tbody > tr > td{
+    border:1px solid black;
+}
