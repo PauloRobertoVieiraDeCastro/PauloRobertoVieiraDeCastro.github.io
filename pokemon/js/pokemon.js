@@ -200,6 +200,10 @@ $(document).ready(function (){
 		cria_paragrafo7.classList.add("text-center");
 		cria_paragrafo7.style = "color: "+back
 
+		var cria_paragrafo8 = document.createElement('p');
+		cria_paragrafo8.classList.add("text-center");
+		cria_paragrafo8.style = "color: "+back
+		var somatotal = pokemon[ii]['stats0'] + pokemon[ii]['stats1'] + pokemon[ii]['stats2'] + pokemon[ii]['stats3'] + pokemon[ii]['stats4'] + pokemon[ii]['stats5']
 		//cria_paragrafo.innerHTML =  "Type: "+ pokemon[ii]['type'];
 		cria_paragrafo2.innerHTML =  "HP: "+ pokemon[ii]['stats0'];
 		cria_paragrafo3.innerHTML =  "Attack: "+ pokemon[ii]['stats1'];
@@ -207,13 +211,15 @@ $(document).ready(function (){
 		cria_paragrafo5.innerHTML =  "Special Attack: "+ pokemon[ii]['stats3'];
 		cria_paragrafo6.innerHTML =  "Special Defense: "+ pokemon[ii]['stats4'];
 		cria_paragrafo7.innerHTML =  "Speed: "+ pokemon[ii]['stats5'];
-		//document.querySelector(".carda"+ii+"-"+j+"a").appendChild(cria_paragrafo);
+		cria_paragrafo8.innerHTML =  "Total: "+ somatotal;
+
 		document.querySelector(".carda"+ii+"-"+j+"a").appendChild(cria_paragrafo2);
 		document.querySelector(".carda"+ii+"-"+j+"a").appendChild(cria_paragrafo3);
 		document.querySelector(".carda"+ii+"-"+j+"a").appendChild(cria_paragrafo4);
 		document.querySelector(".carda"+ii+"-"+j+"a").appendChild(cria_paragrafo5);
 		document.querySelector(".carda"+ii+"-"+j+"a").appendChild(cria_paragrafo6);
 		document.querySelector(".carda"+ii+"-"+j+"a").appendChild(cria_paragrafo7);
+		document.querySelector(".carda"+ii+"-"+j+"a").appendChild(cria_paragrafo8);
 		//cria_div_card_title.classList.add("mb-12");
 		//cria_div_p.classList.add("card"+ii+"-"+j+"a"); //div do card
 				
@@ -288,6 +294,7 @@ function autocompletado(){
 	}
 	
 }
+
 
 
 
