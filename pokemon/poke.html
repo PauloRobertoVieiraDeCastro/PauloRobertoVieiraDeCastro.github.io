@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Pokemons</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/133b0d3f9c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/poke.css">
+        <link rel="shortcut icon" href="poke-ball.ico"/>
+        
+        <!--Header wordpress-->
+        <!--Header wordpress-->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <!--<script type="text/javascript" src="./js/calc.js"></script>-->
+    </head>
+
+    <body>
+    	<div id="loading" style="display: block;" class="justify-content-center text-center">
+            <img src="woo.gif">
+        </div>
+        
+        <div id="conteudo" style="display: none">
+            <header>
+                <h1 class="menu-logo text-center justify-content-center">PokeDex</h1>
+            </header>
+
+
+            <main class="my-3 container agh">
+                <div class="form-row text-center justify-content-center">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <label for="pokemongo">Insira o nome do pokemon</label>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-12 col-sm-12 mod">
+                        
+                        <input style="border: solid 2px" onkeyup="autocompletado()"
+                        class="form-control form-control-lg" name="pokemongo" id="pokemongo" aria-label="Search"
+                        data-target="#myModal" data-toggle="modal">
+                    </div>
+                </div>
+
+                <div class="form-row text-center justify-content-center">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <label for="pokemongo">Ou filtre pelo seu tipo</label>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-12 col-sm-12 mod">
+                        <select onchange="filtro()" class="form-control form-control-lg modelo" id="modelo" style="border: solid 2px" required>
+                            <option>Selecione um tipo</option>
+                            <option>Normal</option>
+                            <option>Fire</option>
+                            <option>Water</option>
+                            <option>Electric</option>
+                            <option>Grass</option>
+                            <option>Ice</option>
+                            <option>Fighting</option>
+                            <option>Poison</option>
+                            <option>Ground</option>
+                            <option>Flying</option>
+                            <option>Psychic</option>
+                            <option>Bug</option>
+                            <option>Rock</option>
+                            <option>Ghost</option>
+                            <option>Dragon</option>
+                            <option>Dark</option>
+                            <option>Steel</option>
+                            <option>Fairy</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row text-center justify-content-center">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <label for="pokemongo">Ou ainda, filtre pela habilidade</label>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-12 col-sm-12 mod">
+                        <select onchange="filtro2()" class="form-control form-control-lg modelo2" id="modelo2" style="border: solid 2px" required>
+                            <option>Selecione uma habilidade</option>
+                            <option>Adaptability</option>
+                            <option>Aerilate</option>
+                            <option>Aftermath</option>
+                            <option>Air-Lock</option>
+                            <option>Analytic</option>
+                            <option>Anger Point</option>
+                            <option>Anticipation</option>
+                            <option>Arena-Trap</option>
+                            <option>Aroma-Veil</option>
+                            <option>As-One</option>
+                            <option>Aura-Break</option>
+                            <option>Bad-Dreams</option>
+                            <option>Ball-Fetch</option>
+                            <option>Battery</option>
+                            <option>Battle-Armor</option>
+                            <option>Battle-Bond</option>
+                            <option>Beast-Boost</option>
+                            <option>Berserk</option>
+
+                            <option>Big-Pecks</option>
+                            <option>Blaze</option>
+                            <option>Bulletproof</option>
+                            <option>Check-Pouch</option>
+                            <option>Chilling-Neigh</option>
+                            <option>Chlorophyll</option>
+                            <option>Clear-Body</option>
+                            <option>Cloud-Nine</option>
+                            <option>Color-Change</option>
+                            <option>Comatose</option>
+                            <option>Competitive</option>
+                            <option>Compound-Eyes</option>
+                            <option>Contrary</option>
+                            <option>Corrosion</option>
+                            <option>Cotton-Down</option>
+                            <option>Curious-Medicine</option>
+                            <option>Cursed-Body</option>
+
+                            <option>Cute-Charm</option>
+                            <option>Damp</option>
+                            <option>Dancer</option>
+                            <option>Dark-Aura</option>
+                            <option>Dauntless-Shield</option>
+                            <option>Dazzling</option>
+                            <option>Defeatist</option>
+                            <option>Defiant</option>
+                            <option>Delta-Stream</option>
+                            <option>Desolate-Land</option>
+                            <option>Disguise</option>
+                            <option>Download</option>
+                            <option>Dragon's-Maw</option>
+                            <option>Drizzle</option>
+                            <option>Drought</option>
+                            <option>Dry-Skin</option>
+                            <option>Early-Bird</option>
+                            <option>Effect-Spore</option>
+
+                            <option>Electric-Surge</option>
+                            <option>Emergency-Exit</option>
+                            <option>Fairy-Aura</option>
+                            <option>Filter</option>
+                            <option>Flame-Body</option>
+                            <option>Flare-Boost</option>
+                            <option>Flash-Fire</option>
+                            <option>Flower-Gift</option>
+                            <option>Flower-Veil</option>
+                            <option>Fluffy</option>
+                            <option>Forecast</option>
+                            <option>Forewarn</option>
+                            <option>Friend-Guard</option>
+                            <option>Frisk</option>
+                            <option>Full-Metal-Body</option>
+                            <option>Fur-Coat</option>
+                            <option>Gale-Wings</option>
+                            <option>Galvanize</option>
+
+                            <option>Gluttony</option>
+                            <option>Gooey</option>
+                            <option>Gorilla-Tactics</option>
+                            <option>Grass-Pelt</option>
+                            <option>Grassy-Surge</option>
+                            <option>Grim-Neigh</option>
+                            <option>Gulp-Missile</option>
+                            <option>Guts</option>
+                            <option>Harvest</option>
+                            <option>Healer</option>
+                            <option>Heatproof</option>
+                            <option>Heavy-Metal</option>
+                            <option>Honey-Gather</option>
+                            <option>Huge-Power</option>
+                            <option>Hunger-Switch</option>
+                            <option>Hustle</option>
+                            <option>Hydration</option>
+                            <option>Hyper-Cutter</option>
+
+                            <option>Ice-Body</option>
+                            <option>Ice-Face</option>
+                            <option>Ice-Scales</option>
+                            <option>Illuminate</option>
+                            <option>Illusion</option>
+                            <option>Immunity</option>
+                            <option>Imposter</option>
+                            <option>Infiltrator</option>
+                            <option>Innards-Out</option>
+                            <option>Inner-Focus</option>
+                            <option>Insomnia</option>
+                            <option>Intimidate</option>
+                            <option>Intrepid-Sword</option>
+                            <option>Iron-Barbs</option>
+                            <option>Iron-Fist</option>
+                            <option>Justified</option>
+                            <option>Keen-Eye</option>
+                            <option>Klutz</option>
+
+                            <option>Leaf-Guard</option>
+                            <option>Levitate</option>
+                            <option>Libero</option>
+                            <option>Light-Metal</option>
+                            <option>Lightning-Rod</option>
+                            <option>Limber</option>
+                            <option>Liquid-Ooze</option>
+                            <option>Liquid-Voice</option>
+                            <option>Long-Reach</option>
+                            <option>Magic-Bounce</option>
+                            <option>Magic-Guard</option>
+                            <option>Magician</option>
+                            <option>Magma-Armor</option>
+                            <option>Magnet-Pull</option>
+                            <option>Marvel-Scale</option>
+                            <option>Mega-Launcher</option>
+                            <option>Merciless</option>
+                            <option>Mimicry</option>
+
+                            <option>Minus</option>
+                            <option>Mirror-Armor</option>
+                            <option>Misty-Surge</option>
+                            <option>Mold-Breaker</option>
+                            <option>Moody</option>
+                            <option>Motor-Drive</option>
+                            <option>Moxie</option>
+                            <option>Multiscale</option>
+                            <option>Multitype</option>
+                            <option>Mummy</option>
+                            <option>Natural-Cure</option>
+                            <option>Neuroforce</option>
+                            <option>Neutralizing-Gas</option>
+                            <option>No-Guard</option>
+                            <option>Normalize</option>
+                            <option>Oblivious</option>
+                            <option>Overcoat</option>
+                            <option>Overgrow</option>
+
+                            <option>Own-Tempo</option>
+                            <option>Parental-Bond</option>
+                            <option>Pastel-Veil</option>
+                            <option>Perish-Body</option>
+                            <option>Pickpocket</option>
+                            <option>Pickup</option>
+                            <option>Pixilate</option>
+                            <option>Plus</option>
+                            <option>Poison-Heal</option>
+                            <option>Poison-Point</option>
+                            <option>Poison-Touch</option>
+                            <option>Power-Construct</option>
+                            <option>Power-of-Alchemy</option>
+                            <option>Power-Spot</option>
+                            <option>Prankster</option>
+                            <option>Primordial-Sea</option>
+                            <option>Prism-Armor</option>
+                            <option>Propeller-Tail</option>
+
+                            <option>Protean</option>
+                            <option>Psychical-Surge</option>
+                            <option>Punk-Rock</option>
+                            <option>Pure-Power</option>
+                            <option>Queenly-Majesty</option>
+                            <option>Quick-Draw</option>
+                            <option>Quick-Feet</option>
+                            <option>Rain-Dish</option>
+                            <option>Rattled</option>
+                            <option>Receiver</option>
+                            <option>Reckless</option>
+                            <option>Refrigerate</option>
+                            <option>Regenerator</option>
+                            <option>Ripen</option>
+                            <option>Rivarly</option>
+                            <option>RKS-System</option>
+                            <option>Rock-Head</option>
+                            <option>Rough-Skin</option>
+                            <option>Sand-Force</option>
+
+                            <option>Sand-Rush</option>
+                            <option>Sand-Spit</option>
+                            <option>Sand-Stream</option>
+                            <option>Sand-Veil</option>
+                            <option>Sap-Sipper</option>
+                            <option>Schooling</option>
+                            <option>Scrappy</option>
+                            <option>Screen-Cleaner</option>
+                            <option>Serene-Grace</option>
+                            <option>Shadown-Shield</option>
+                            <option>Shadow-Tag</option>
+                            <option>Shed-Skin</option>
+                            <option>Sheer-Force</option>
+                            <option>Shell-Armor</option>
+                            <option>Shield-Dust</option>
+                            <option>Shields-Down</option>
+                            <option>Simple</option>
+                            <option>Skill-Link</option>
+                            <option>Slow-Start</option>
+
+                            <option>Slush-Rush</option>
+                            <option>Sniper</option>
+                            <option>Snow-Cloak</option>
+                            <option>Snow-Warning</option>
+                            <option>Solar-Power</option>
+                            <option>Solid-Rock</option>
+                            <option>Soul-Heart</option>
+                            <option>Soundproof</option>
+                            <option>Speed-Boost</option>
+                            <option>Stakeout</option>
+                            <option>Stall</option>
+                            <option>Stalwart</option>
+                            <option>Stamina</option>
+                            <option>Stance-Change</option>
+                            <option>Static</option>
+                            <option>Steadfast</option>
+                            <option>Steam-Engine</option>
+                            <option>Steelworker</option>
+                            <option>Steely-Spirit</option>
+
+                            <option>Stench</option>
+                            <option>Sticky-Hold</option>
+                            <option>Storm-Drain</option>
+                            <option>Strong-Jaw</option>
+                            <option>Sturdy</option>
+                            <option>Suction-Cups</option>
+                            <option>Super-Luck</option>
+                            <option>Surge-Surfer</option>
+                            <option>Swarm</option>
+                            <option>Sweet-Veil</option>
+                            <option>Swift-Swim</option>
+                            <option>Symbiosis</option>
+                            <option>Synchronize</option>
+                            <option>Tangled-Feet</option>
+                            <option>Tangling-Hair</option>
+                            <option>Technician</option>
+                            <option>Telepathy</option>
+                            <option>Teravolt</option>
+                            <option>Thick-Fat</option>
+
+                            <option>Tinted-Lens</option>
+                            <option>Torrent</option>
+                            <option>Tough-Claws</option>
+                            <option>Toxic-Boost</option>
+                            <option>Trace</option>
+                            <option>Transistor</option>
+                            <option>Triage</option>
+                            <option>Truant</option>
+                            <option>Turboblaze</option>
+                            <option>Unaware</option>
+                            <option>Unburden</option>
+                            <option>Unnerve</option>
+                            <option>Unseen-Fist</option>
+                            <option>Victory-Star</option>
+                            <option>Vital-Spirit</option>
+                            <option>Volt-Absorb</option>
+                            <option>Wandering-Spirit</option>
+                            <option>Water-Absorb</option>
+                            <option>Water-Bubble</option>
+
+                            <option>Water-Compaction</option>
+                            <option>Water-Veil</option>
+                            <option>Weak-Armor</option>
+                            <option>White-Smoke</option>
+                            <option>Wimp-Out</option>
+                            <option>Wonder-Guard</option>
+                            <option>Wonder-Skin</option>
+                            <option>Zen-Mode</option>
+                           
+                        </select>
+                    </div>
+                </div>
+            </main>
+
+            
+
+    	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+   		<!-- Popper js -->
+        <script src="js/bootstrap/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <!-- All Plugins js -->
+        <script src="js/plugins/plugins.js"></script>
+        <!-- Active js -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./js/pokemon.js"></script>
+        
+    </body>
+</html>
