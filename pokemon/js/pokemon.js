@@ -39,6 +39,7 @@ $(document).ready(function (){
 			j+=1;
 			cria_div = document.createElement('div');
 			cria_div.classList.add("row");
+			cria_div.classList.add("anime");
 			//cria_div.classList.add("my-3");
 			cria_div.classList.add("linha"+j+"a");
 			cria_div.id = "linha"+j+"a";
