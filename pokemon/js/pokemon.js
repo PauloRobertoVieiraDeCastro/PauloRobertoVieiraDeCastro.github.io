@@ -321,5 +321,15 @@ function autocompletado(){
 	
 }
 
+$(window).scroll(function(){
+	//$(".anime").slideDown(1000)
+	var wTop = $(this).scrollTop()
+		
+	$(".anime").each(function(){
+		if((wTop > $(this).offset().top - 450)){
+			$(this).addClass("anime-init")
+		}
+	})
+})
 
 
