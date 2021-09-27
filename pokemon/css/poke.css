@@ -200,3 +200,15 @@ label{
   margin-bottom: -10px;
 }
 
+.anime{
+	opacity: 0;
+	transform: translate3d(-80px,0px,0px)
+}
+
+.anime-init{
+	opacity: 1;
+	transition: 0.7s all ease;
+	transform: translate3d(0px,0px,0px)
+}
+
+
