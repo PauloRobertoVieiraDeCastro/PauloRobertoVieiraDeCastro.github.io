@@ -81,8 +81,9 @@ var data2 = {
         data: [480, 520, 650],
         // Define as cores de preenchimento das barras
         // de acordo com sua posição no vetor
-        backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 199, 132)', 'rgb(55, 99, 132)']
-       
+        backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 199, 132)', 'rgb(55, 99, 132)'],
+        borderWidth: 2.5 ,
+        borderColor: '#ddd'
     }],
     labels: ['EV-00001','EV-00002','EV-00003']
 };
@@ -149,7 +150,7 @@ var myChart = new Chart(ctx2, {
         datasets: [{
             data: [92, 780, 44],
             backgroundColor: ['#e91e6e', 'rgb(54, 162, 235)', '#ff5722'],
-            borderWidth: 0.5 ,
+            borderWidth: 2.5 ,
             borderColor: '#ddd'
         }]
     },
