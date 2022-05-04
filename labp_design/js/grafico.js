@@ -1,7 +1,3 @@
-
-
-
-
 var data = {
     // Legendas das Barras
     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'], //meses
@@ -36,8 +32,12 @@ var data = {
 options = {
 	legend: {display: false},
     title: {
-      display: true,
-      text: "Horas operacionais por mês"
+	      display: true,
+	      text: "Horas operacionais por mês",
+	      position: 'top',
+	      fontSize: 16,
+	      fontColor: '#111',
+	      padding: 20
     },
     scales: {
         yAxes: [{
@@ -93,8 +93,21 @@ var data2 = {
 options2 = {
     title: {
       display: true,
-      text: "Proporção de EV´s atendidas pela unidade"
+      text: "Proporção de EV´s atendidas pela unidade",
+      position: 'top',
+      fontSize: 16,
+      fontColor: '#111',
+      padding: 20
     },
+    legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+                boxWidth: 20,
+                fontColor: '#111',
+                padding: 15
+            }
+        },
     cutoutPercentage: 40,
     tooltips: {
          enabled: true
@@ -159,7 +172,7 @@ var myChart = new Chart(ctx2, {
             }
         },
         tooltips: {
-            enabled: false
+            enabled: true
         },
         plugins: {
             datalabels: {
